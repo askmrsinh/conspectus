@@ -1,4 +1,4 @@
 Make all edits in "SRS.doc" file.
 
-For reference see "cpts332-srs-v1.doc" and "SRS-template.doc"
-More details and help is available in "writing-software-requirements-specifications.doc"
+For reference see "cpts332-srs-v1.doc" and "SRS-template.doc".
+More details and help is available in "writing-software-requirements-specifications.doc".
