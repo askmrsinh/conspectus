@@ -1,0 +1,75 @@
+body {
+  background-color: #EE6A56;
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  line-height: 46px;
+  font-size: 46px;
+  margin: 0 0 23px 0;
+}
+
+p {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0 0 23px 0;
+}
+
+form {
+  width: 400px;
+  height: 422px;/*367px;*/
+  margin: 50px auto;
+}
+
+img {
+  display: block;
+  width: 82px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+#messages {
+  margin: 30px 10px 20px 10px;
+  text-align: center;
+
+}
+
+p>.brand {
+  font-family: 'Grand Hotel', cursive;
+  font-weight: bold;
+  font-size: 28px !important;
+  text-shadow: 1px 3px #955050;
+  color: black;
+}
+
+.input-group,
+.form-group {
+  margin: 20px 10px 20px 10px;
+}
+
+.btn-block {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer {
+  width: 400px;
+  height: auto;
+  margin: 20px auto;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+a.input-group:hover {
+  text-decoration: underline;
+}
