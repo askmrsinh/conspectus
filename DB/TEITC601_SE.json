@@ -1,0 +1,311 @@
+{
+  "id": 1,
+  "name": "Introduction to Software Engineering",
+  "hours": 3,
+  "sm": [
+    {
+      "smid": 1.1,
+      "smn": "Professional Software Development"
+    },
+    {
+      "smid": 1.2,
+      "smn": "Layered Technology"
+    },
+    {
+      "smid": 1.3,
+      "smn": "Process framework"
+    },
+    {
+      "smid": 1.4,
+      "smn": "CMM"
+    },
+    {
+      "smid": 1.5,
+      "smn": "Process Patterns and Assessment"
+    }
+  ],
+  
+  "id": 2,
+  "name": "Process Models",
+  "hours": 6,
+  "sm": [
+    {
+      "smid": 2.1,
+      "smn": "Prescriptive Models : Waterfall Model"
+    }, 
+	{
+      "smid": 2.2,
+      "smn": "Incremental Model"
+    },
+	{
+      "smid": 2.3,
+      "smn": "RAD Models"
+    },
+	{
+      "smid": 2.4,
+      "smn": "Evolutionary Process Models : Prototyping"
+    },
+	{
+      "smid": 2.5,
+      "smn": "Evolutionary Process Models : Spiral"
+    },
+	{
+      "smid": 2.6,
+      "smn": "Evolutionary Process Models : Concurrent Development Model"
+    },
+	{
+      "smid": 2.7,
+      "smn": "Specialized Models: Component based"
+    },
+	{
+      "smid": 2.8,
+      "smn": "Specialized Models: Aspect Oriented development"
+    }
+  ],
+  
+  "id": 3,
+  "name": "Agile Software Development",
+  "hours": 3,
+  "sm": [
+    {
+      "smid": 3.1,
+      "smn": "Agile Process and Process Models"
+    },
+    {
+      "smid": 3.2,
+      "smn": "Adaptive and Dynamic system Development"
+    },
+    {
+      "smid": 3.3,
+      "smn": "Scrum"
+    },
+    {
+      "smid": 3.4,
+      "smn": "Feature Driven Development and Agile Modeling"
+    }
+  ],
+  
+  "id": 4,
+  "name": "Engineering and Modeling Practices",
+  "hours": 4,
+  "sm": [
+    {
+      "smid": 4.1,
+      "smn": "Core Principles"
+    },
+    {
+      "smid": 4.2,
+      "smn": "Communication"
+    },
+    {
+      "smid": 4.3,
+      "smn": "Planning"
+    },
+    {
+      "smid": 4.4,
+      "smn": "Modeling"
+    },
+	{
+      "smid": 4.5,
+      "smn": "Construction and deployment"
+    },
+	{
+      "smid": 4.6,
+      "smn": "System Modeling and UML"
+    }
+  ],
+  
+  "id": 5,
+  "name": "Requirements Engineering and Analysis Model",
+  "hours": 6,
+  "sm": [
+    {
+      "smid": 5.1,
+      "smn": "Requirements Engineering Tasks"
+    },
+    {
+      "smid": 5.2,
+      "smn": "Elicitation"
+    },
+    {
+      "smid": 5.3,
+      "smn": "building analysis model"
+    },
+    {
+      "smid": 5.4,
+      "smn": "Data Modeling concepts"
+    },
+    {
+      "smid": 5.5,
+      "smn": "Object Oriented Analysis"
+    }
+  ],
+  
+  "id": 6,
+  "name": "Design Engineering",
+  "hours": 5,
+  "sm": [
+    {
+      "smid": 6.1,
+      "smn": "Design Concepts"
+    },
+    {
+      "smid": 6.2,
+      "smn": "Design Model : Data"
+    },
+    {
+      "smid": 6.3,
+      "smn": "Design Model : Architecture"
+    },
+    {
+      "smid": 6.4,
+      "smn": "Design Model : Interface"
+    },
+    {
+      "smid": 6.5,
+      "smn": "Design Model : Component Level and Deployment Level design elements"
+    }
+  ],
+  
+  "id": 7,
+  "name": "Testing strategies and tactics",
+  "hours": 6,
+  "sm": [
+    {
+      "smid": 7.1,
+      "smn": "Testing strategies for conventional and Object Oriented architectures"
+    },
+    {
+      "smid": 7.2,
+      "smn": "Validation and system testing"
+    },
+    {
+      "smid": 7.3,
+      "smn": "Software testing fundamentals"
+    },
+    {
+      "smid": 7.4,
+      "smn": "Black box and white box testing"
+    },
+    {
+      "smid": 7.5,
+      "smn": "Object Oriented testing methods"
+    }
+  ],
+  
+  "id": 8,
+  "name": "Metrics for Process and Projects",
+  "hours": 6,
+  "sm": [
+    {
+      "smid": 8.1,
+      "smn": "Process Metrics and Project Metrics"
+    },
+    {
+      "smid": 8.2,
+      "smn": "Software Measurement"
+    },
+    {
+      "smid": 8.3,
+      "smn": "Object Oriented Metrics"
+    },
+    {
+      "smid": 8.4,
+      "smn": "Software Project Estimation"
+    },
+    {
+      "smid": 8.5,
+      "smn": "Decomposition Techniques"
+    },
+	{
+      "smid": 8.6,
+      "smn": "LOC based"
+    },
+	{
+      "smid": 8.7,
+      "smn": "FP based and Use case based estimations"
+    },
+	{
+      "smid": 8.8,
+      "smn": "Empirical estimation Models"
+    }
+  ],
+  
+  "id": 9,
+  "name": "Risk Management",
+  "hours": 3,
+  "sm": [
+    {
+      "smid": 9.1,
+      "smn": "Risk strategies"
+    },
+    {
+      "smid": 9.2,
+      "smn": "Software risks"
+    },
+    {
+      "smid": 9.3,
+      "smn": "Risk Identification"
+    },
+    {
+      "smid": 9.4,
+      "smn": "Projection"
+    },
+    {
+      "smid": 9.5,
+      "smn": "RMMM"
+    }
+  ],
+  
+  "id": 10,
+  "name": "Quality Management",
+  "hours": 3,
+  "sm": [
+    {
+      "smid": 10.1,
+      "smn": "Quality Concepts"
+    },
+    {
+      "smid": 10.2,
+      "smn": "SQA activities"
+    },
+    {
+      "smid": 10.3,
+      "smn": "Software reviews"
+    },
+    {
+      "smid": 10.4,
+      "smn": "FTR"
+    },
+    {
+      "smid": 10.5,
+      "smn": "Software reliability and measures"
+    },
+	{
+      "smid": 10.6,
+      "smn": "SQA Plan"
+    }
+  ],
+  
+  "id": 11,
+  "name": "Change Management",
+  "hours": 3,
+  "sm": [
+    {
+      "smid": 11.1,
+      "smn": "Software Configuration Management"
+    },
+    {
+      "smid": 11.2,
+      "smn": "Elements of SCM"
+    },
+    {
+      "smid": 11.3,
+      "smn": "SCM Process"
+    },
+    {
+      "smid": 11.4,
+      "smn": "Change Control"
+    }
+  ],
+}

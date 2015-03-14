@@ -1,0 +1,48 @@
+form {
+  width: 400px;
+  height: 422px;/*367px;*/
+  margin: 50px auto;
+}
+
+img {
+  display: block;
+  width: 82px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+#messages {
+  margin: 30px 10px 20px 10px;
+  text-align: center;
+
+}
+
+.input-group,
+.form-group {
+  margin: 20px 10px 20px 10px;
+}
+
+.btn-block {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer {
+  width: 400px;
+  height: auto;
+  margin: 20px auto;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+a.input-group:hover {
+  text-decoration: underline;
+}
