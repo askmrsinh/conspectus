@@ -1,0 +1,11 @@
+.container-fluid {
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+@media(min-width:767px) {
+  .navbar {
+    padding: 3.5px 0;
+    border-bottom: 1px solid #ccc
+  }
+}
