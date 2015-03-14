@@ -1,3 +1,4 @@
+<!-- connect to MySQL Database -->
 <?php
 $db_host = "localhost";
 $db_user = "root";
@@ -5,36 +6,31 @@ $db_pass = "root";
 $db_name = "project_se";
 $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("database conncetion Failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 ?>
-
 <?php
-//require_once("include_functions.php");
-
 if (isset($_POST['submit'])) {
-  $username = trim($_POST["username"]);
-  $password = trim($_POST["password"]);
+  $username = trim(mysqli_real_escape_string($connection,$_POST["username"]));
+  $password = trim(mysqli_real_escape_string($connection,$_POST["password"]));
 
   $sql = "SELECT * FROM accounts WHERE Username='$username' and Password='$password'";
   $result = mysqli_query($connection, $sql) or die("database conncetion Failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");;
 
   if (!$result) {
-    die("database conncetion Failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
+    die("database conncetion failed: " . mysqli_error($connection));
   }
 
   $row = mysqli_fetch_row($result);
 
-  // If result matched $myusername and $mypassword, table row must be 1 row
+  // If result matched $username and $password
   if($row){
     $message = "Logged in as: " . $row[2];
-    //header("location:login_success.php");
   } else {
     $message = "Wrong Username or Password";
   }
-}else {
+} else {
   $username = "";
   $message = "Login to <span class=\"brand\">Conspectus.</span>";
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -48,10 +44,11 @@ if (isset($_POST['submit'])) {
     <!-- Custom Fonts -->
     <link href="" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Lato:300|Grand+Hotel" rel="stylesheet" type="text/css" />
-    <!-- Material Design for Bootstrap -->
+    <!-- Flat-UI for Bootstrap -->
     <link href="Flat-UI-master/dist/css/flat-ui.min.css" rel="stylesheet">
     <!-- Custom CSS-->
     <link href="css/main.css" rel="stylesheet">
+    <link href="css/login-register.css" rel="stylesheet">
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico">
   </head>
@@ -83,10 +80,11 @@ echo "<p id=\"messages\">".$message."</p>";
     <script src="js/jquery-1.11.2.min.js"></script>
     <!-- Twitter Bootstrap Core JS -->
     <script src="bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
-    <!-- Material Design for Bootstrap -->
+    <!-- Flat-UI for Bootstrap -->
     <script src="Flat-UI-master/dist/js/flat-ui.min.js"></script>
   </body>
 </html>
+<!-- close database connection -->
 <?php
 mysqli_close($connection);
 ?>
