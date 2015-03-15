@@ -7,6 +7,7 @@ $db_name = "project_se";
 $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("database conncetion Failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 ?>
 <?php
+session_start();
 if (isset($_POST['submit'])) {
   $username = trim(mysqli_real_escape_string($connection,$_POST["username"]));
   $password = trim(mysqli_real_escape_string($connection,$_POST["password"]));
@@ -22,9 +23,10 @@ if (isset($_POST['submit'])) {
 
   // If result matched $username and $password
   if($row){
-    $message = "Logged in as: " . $row[2];
+    $_SESSION['full_name'] = $row[2];
+    header('Location:index.php');
   } else {
-    $message = "Wrong Username or Password";
+    $message = "Wrong Username or Password, try again . . .";
   }
 } else {
   $username = "";
