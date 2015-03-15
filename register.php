@@ -18,7 +18,8 @@ if (isset($_POST['submit'])) {
   if (!$result) {
     die("database conncetion Failed: " . mysqli_error($connection));
   } else {
-    $message = "Logged in as: " . $full_name;
+    $message = "Registered as: " . $full_name . ", redirecting . . .";
+    header("refresh:3;url=login.php");
   }
 } else {
   $username = "";
