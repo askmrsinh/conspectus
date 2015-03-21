@@ -24,7 +24,7 @@
       "smn": "Process Patterns and Assessment"
     }
   ],
-  
+
   "id": 2,
   "name": "Process Models",
   "hours": 6,
@@ -32,37 +32,37 @@
     {
       "smid": 2.1,
       "smn": "Prescriptive Models : Waterfall Model"
-    }, 
-	{
+    },
+    {
       "smid": 2.2,
       "smn": "Incremental Model"
     },
-	{
+    {
       "smid": 2.3,
       "smn": "RAD Models"
     },
-	{
+    {
       "smid": 2.4,
       "smn": "Evolutionary Process Models : Prototyping"
     },
-	{
+    {
       "smid": 2.5,
       "smn": "Evolutionary Process Models : Spiral"
     },
-	{
+    {
       "smid": 2.6,
       "smn": "Evolutionary Process Models : Concurrent Development Model"
     },
-	{
+    {
       "smid": 2.7,
       "smn": "Specialized Models: Component based"
     },
-	{
+    {
       "smid": 2.8,
       "smn": "Specialized Models: Aspect Oriented development"
     }
   ],
-  
+
   "id": 3,
   "name": "Agile Software Development",
   "hours": 3,
@@ -84,7 +84,7 @@
       "smn": "Feature Driven Development and Agile Modeling"
     }
   ],
-  
+
   "id": 4,
   "name": "Engineering and Modeling Practices",
   "hours": 4,
@@ -105,16 +105,16 @@
       "smid": 4.4,
       "smn": "Modeling"
     },
-	{
+    {
       "smid": 4.5,
       "smn": "Construction and deployment"
     },
-	{
+    {
       "smid": 4.6,
       "smn": "System Modeling and UML"
     }
   ],
-  
+
   "id": 5,
   "name": "Requirements Engineering and Analysis Model",
   "hours": 6,
@@ -140,7 +140,7 @@
       "smn": "Object Oriented Analysis"
     }
   ],
-  
+
   "id": 6,
   "name": "Design Engineering",
   "hours": 5,
@@ -166,7 +166,7 @@
       "smn": "Design Model : Component Level and Deployment Level design elements"
     }
   ],
-  
+
   "id": 7,
   "name": "Testing strategies and tactics",
   "hours": 6,
@@ -192,7 +192,7 @@
       "smn": "Object Oriented testing methods"
     }
   ],
-  
+
   "id": 8,
   "name": "Metrics for Process and Projects",
   "hours": 6,
@@ -217,20 +217,20 @@
       "smid": 8.5,
       "smn": "Decomposition Techniques"
     },
-	{
+    {
       "smid": 8.6,
       "smn": "LOC based"
     },
-	{
+    {
       "smid": 8.7,
       "smn": "FP based and Use case based estimations"
     },
-	{
+    {
       "smid": 8.8,
       "smn": "Empirical estimation Models"
     }
   ],
-  
+
   "id": 9,
   "name": "Risk Management",
   "hours": 3,
@@ -256,7 +256,7 @@
       "smn": "RMMM"
     }
   ],
-  
+
   "id": 10,
   "name": "Quality Management",
   "hours": 3,
@@ -281,12 +281,12 @@
       "smid": 10.5,
       "smn": "Software reliability and measures"
     },
-	{
+    {
       "smid": 10.6,
       "smn": "SQA Plan"
     }
   ],
-  
+
   "id": 11,
   "name": "Change Management",
   "hours": 3,
