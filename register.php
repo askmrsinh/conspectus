@@ -6,23 +6,30 @@ $db_pass = "root";
 $db_name = "project_se";
 $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("database conncetion Failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 ?>
+
 <?php
+//check if Register form is submitted
 if (isset($_POST['submit'])) {
+  //to prevent SQL INJECTION ATTACK
   $username = trim(mysqli_real_escape_string($connection,$_POST["username"]));
   $password = trim(mysqli_real_escape_string($connection,$_POST["password"]));
   $full_name = trim(ucwords(mysqli_real_escape_string($connection,$_POST["full_name"])));
 
+  //make a new entry in "accounts" TABLE
   $sql = "INSERT INTO accounts VALUES ('{$username}','{$password}','{$full_name}');";
-  $result = mysqli_query($connection, $sql) or die("database conncetion failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");;
+  $result = mysqli_query($connection, $sql) or die("database conncetion failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 
   if (!$result) {
     die("database conncetion Failed: " . mysqli_error($connection));
   } else {
+    //display registration successful message and redirect to Login page
     $message = "Registered as: " . $full_name . ", redirecting . . .";
     header("refresh:3;url=login.php");
   }
 } else {
+  //default username
   $username = "";
+  //default message
   $message = "Make a <span class=\"brand\">Conspectus </span>Account.";
 }
 ?>
@@ -37,21 +44,22 @@ if (isset($_POST['submit'])) {
     <!-- Twitter Bootstrap Core CSS -->
     <link href="bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Fonts -->
-    <link href="" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Lato:300|Grand+Hotel" rel="stylesheet" type="text/css" />
     <!-- Flat-UI for Bootstrap -->
     <link href="Flat-UI-master/dist/css/flat-ui.min.css" rel="stylesheet">
     <!-- Custom CSS-->
     <link href="css/main.css" rel="stylesheet">
     <link href="css/login-register.css" rel="stylesheet">
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico">
   </head>
   <body>
+    <!-- Registeration Form -->
     <form id="register-form" action="" method="post">
       <img src="PNGs/Notebook.png" alt="" />
       <?php
-echo "<p id=\"messages\">".$message."</p>";
+        echo "<p id=\"messages\">".$message."</p>";
       ?>
       <div class="form-group input-group-lg">
         <input type="text" name="full_name" required="" pattern="^[A-Za-z. ]{3,36}" placeholder="Your full name" class="form-control">
@@ -70,6 +78,7 @@ echo "<p id=\"messages\">".$message."</p>";
       <hr />
       <a class="input-group" href="login.php">Already have an account?</a>
     </div>
+
     <!-- jQuery -->
     <script src="js/jquery-1.11.2.min.js"></script>
     <!-- Twitter Bootstrap Core JS -->

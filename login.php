@@ -6,30 +6,38 @@ $db_pass = "root";
 $db_name = "project_se";
 $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("database conncetion Failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 ?>
+
+<!-- PHP Session -->
 <?php
 session_start();
+//check if Login form is submitted
 if (isset($_POST['submit'])) {
+  //to prevent SQL INJECTION ATTACK
   $username = trim(mysqli_real_escape_string($connection,$_POST["username"]));
   $password = trim(mysqli_real_escape_string($connection,$_POST["password"]));
 
-  $sql = "SELECT * FROM accounts WHERE Username='$username' and Password='$password'";
+  //validate input login details from "accounts" TABLE
+  $sql = "SELECT * FROM accounts WHERE Username='$username' and Password='$password';";
   $result = mysqli_query($connection, $sql) or die("database conncetion Failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");;
 
   if (!$result) {
-    die("database conncetion failed: " . mysqli_error($connection));
+    die("SELECT * FROM accounts . . . , failed: " . mysqli_error($connection));
   }
 
   $row = mysqli_fetch_row($result);
 
   // If result matched $username and $password
   if($row){
+    $_SESSION['username'] = $row[0];
     $_SESSION['full_name'] = $row[2];
     header('Location:index.php');
   } else {
     $message = "Wrong Username or Password, try again . . .";
   }
 } else {
+  //default username
   $username = "";
+  //default message
   $message = "Login to <span class=\"brand\">Conspectus.</span>";
 }
 ?>
@@ -44,21 +52,22 @@ if (isset($_POST['submit'])) {
     <!-- Twitter Bootstrap Core CSS -->
     <link href="bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Fonts -->
-    <link href="" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Lato:300|Grand+Hotel" rel="stylesheet" type="text/css" />
     <!-- Flat-UI for Bootstrap -->
     <link href="Flat-UI-master/dist/css/flat-ui.min.css" rel="stylesheet">
     <!-- Custom CSS-->
     <link href="css/main.css" rel="stylesheet">
     <link href="css/login-register.css" rel="stylesheet">
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico">
   </head>
   <body>
+    <!-- Login Form -->
     <form action="login.php" method="POST">
       <img src="PNGs/Notebook.png" alt="" />
       <?php
-echo "<p id=\"messages\">".$message."</p>";
+        echo "<p id=\"messages\">".$message."</p>";
       ?>
       <div class="input-group input-group-lg">
         <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user"></i></span>
@@ -78,6 +87,7 @@ echo "<p id=\"messages\">".$message."</p>";
       <hr />
       <a class="input-group" href="register.php">Make an account</a>
     </div>
+
     <!-- jQuery -->
     <script src="js/jquery-1.11.2.min.js"></script>
     <!-- Twitter Bootstrap Core JS -->
