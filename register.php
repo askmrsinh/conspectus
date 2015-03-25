@@ -56,7 +56,7 @@ if (isset($_POST['submit'])) {
   </head>
   <body>
     <!-- Registeration Form -->
-    <form id="register-form" action="" method="post">
+    <form id="register-form" action="register.php" method="POST">
       <img src="PNGs/Notebook.png" alt="" />
       <?php
         echo "<p id=\"messages\">".$message."</p>";

@@ -10,34 +10,48 @@ $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("dat
 <?php
 session_start();
 
-$sql = " ";
-$courses_sqlresult = mysqli_query($connection, $sql) or die("database conncetion Failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
-
-if (!$courses_sqlresult) {
-  die("database conncetion failed: " . mysqli_error($connection));
+//redirect user to login page if user isn't logged in
+if (!isset($_SESSION['username'])) {
+  header("Location: login.php");//use for the redirection to login page  
 }
 
-if (isset($_POST['submit'])) {
-  $courses_thought = $_POST['courses_checked'];
-  if(empty($courses_thought)) {
-    $message = "You have no course to display";
-  }
-  else
-  {
-    $N = count($courses_thought);
+//$setplan = $_POST['plan'];
+$table = "00ashesh_2015_teitc601_se";
 
-    $message = "You selected $N course(s): ";
-    for($i=0; $i < $N; $i++)
-    {
-      $year = date("Y");
-      $course_table_id = $_SESSION['username'] ."_". $year ."_". $courses_thought[$i];
-      $sql = "INSERT INTO dashboard VALUES ('{$year}','{$_SESSION['username']}','{$courses_thought[$i]}','{$course_table_id}');";
-      $dashboard_sqlresult = mysqli_query($connection, $sql) or die("database conncetion failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
-    }
-  }
-} else {
-  $message = "Your Dashboard";
+//echo $setplan;
+
+// show table
+
+// sending query
+$result = mysqli_query($connection, "SELECT * FROM {$table}");
+if (!$result) {
+  die("Query to show fields from table failed");
 }
+
+$fields_num = mysqli_num_fields($result);
+
+echo "<h1>Table: {$table}</h1>";
+echo "<table class=\"table table-hover table-responsive table-bordered\"><tr>";
+// printing table headers
+for($i=0; $i<$fields_num; $i++)
+{
+  $field = mysqli_fetch_field($result);
+  echo "<td>{$field->name}</td>";
+}
+echo "</tr>\n";
+// printing table rows
+while($row = mysqli_fetch_row($result))
+{
+  echo "<tr>";
+
+  // $row is array... foreach( .. ) puts every element
+  // of $row to $cell variable
+  foreach($row as $cell)
+    echo "<td>$cell</td>";
+
+  echo "</tr>\n";
+}
+mysqli_free_result($result);
 ?>
 
 <!DOCTYPE html>
@@ -65,6 +79,7 @@ if (isset($_POST['submit'])) {
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico">
+
   </head>
   <body>
     <!-- jQuery -->

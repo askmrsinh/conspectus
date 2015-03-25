@@ -10,6 +10,12 @@ $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("dat
 <!-- PHP Session -->
 <?php
 session_start();
+
+//redirect user to login page if user isn't logged in
+if (!isset($_SESSION['username'])) {
+  header("Location: login.php");//use for the redirection to login page  
+}
+
 //retrive a list of avalable course details in "courses" TABLE
 $sql = "SELECT * FROM `courses` ORDER BY `course_id`";
 $courses_sqlresult = mysqli_query($connection, $sql) or die("database conncetion Failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
@@ -35,16 +41,16 @@ if (isset($_POST['submit'])) {
     {
       //estimate the year the course is being taken in
       $year = date("Y");
-      $_SESSION['course_table_id'] = "00" . $_SESSION['username'] ."_". $year ."_". $courses_thought[$i];
+      $course_table_id = "00" . $_SESSION['username'] ."_". $year ."_". $courses_thought[$i];
 
-      $sql = "INSERT INTO dashboard VALUES ('{$year}','{$_SESSION['username']}','{$courses_thought[$i]}','{$_SESSION['course_table_id']}');";
+      $sql = "INSERT INTO dashboard VALUES ('{$year}','{$_SESSION['username']}','{$courses_thought[$i]}','{$course_table_id}');";
       $dashboard_sqlresult = mysqli_query($connection, $sql) or die("database conncetion failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 
       if (!$dashboard_sqlresult) {
         die("INSERT INTO dashboard . . ., failed: " . mysqli_error($connection));
       }
 
-      $sql = "CREATE TABLE IF NOT EXISTS `{$_SESSION['course_table_id']}` (";
+      $sql = "CREATE TABLE IF NOT EXISTS `$course_table_id` (";
       $sql .= "`m_id` int(2) DEFAULT NULL,";
       $sql .= "`sm_id` int(2) DEFAULT NULL,";
       $sql .= "`m_name` varchar(255) DEFAULT NULL,";
@@ -55,7 +61,7 @@ if (isset($_POST['submit'])) {
       $sql .= ") ENGINE=InnoDB DEFAULT CHARSET=latin1;";
       $create_course_tabel_idsqlresult = mysqli_query($connection, $sql) or die("CREATE database conncetion failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 
-      $sql = "INSERT INTO `{$_SESSION['course_table_id']}`(`m_id`, `sm_id`, `m_name`, `sm_name`, `hours`) SELECT `m_id`, `sm_id`, `m_name`, `sm_name`, `hours` FROM `$courses_thought[$i]`";
+      $sql = "INSERT INTO `$course_table_id`(`m_id`, `sm_id`, `m_name`, `sm_name`, `hours`) SELECT `m_id`, `sm_id`, `m_name`, `sm_name`, `hours` FROM `$courses_thought[$i]`";
       $insert_course_tabel_idsqlresult = mysqli_query($connection, $sql) or die("INSERT database conncetion failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
     }
   }
@@ -110,7 +116,7 @@ if (isset($_POST['submit'])) {
                 <li><a href="#1">New Syllabus</a></li>
                 <li class="divider"></li>
                 <li><a href="#">Edit Profile</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="logout.php">Logout</a></li>
               </ul>
             </li>
           </ul>
@@ -122,7 +128,7 @@ if (isset($_POST['submit'])) {
 
     <!-- Modal -->
     <div class="remodal" data-remodal-id="1">
-      <form action="index.php" method="POST">
+      <form action="index.php" method="POST" class="selectcourses">
         <?php
         //display a list of available courses in databse
         while ($temp = mysqli_fetch_assoc($courses_sqlresult)){
@@ -210,23 +216,29 @@ if (isset($_POST['submit'])) {
             }
             while ($course_thought_row = mysqli_fetch_assoc($sectiongroupb_sqlresult)){
               foreach($course_thought_row as $sectioncourse_thought_field) {
+                $buttoncourse_table_id = "00" . $_SESSION['username']. "_" .$sectionyear_field ."_". $sectioncourse_thought_field;
                 echo "<div id=\"" .$sectionyear_field.$sectioncourse_thought_field. "\" class=\"subgroup panel panel-default\">";
                 echo "<div class=\"panel-body\">";
                 echo "<h4><i class=\"glyphicon glyphicon-book\"></i>" .$sectioncourse_thought_field. "</h4>";
 
                 echo "<div class=\"row demo-row\">";
+                echo "<form action=\"syllabus.php\" method=\"POST\" target=\"_blank\">";
+
                 echo "<div class=\"col-lg-3\">";
-                echo "<a href=\"#fakelink\" target=_blank class=\"btn btn-block btn-lg btn-info\">Set Plan</a>";
+
+                echo "<button target=_blank type=\"submit\" name=\"plan\" value=\"" .$buttoncourse_table_id. "\" class=\"btn btn-block btn-lg btn-info\">Set Plan</button>";
                 echo "</div>";
                 echo "<div class=\"col-lg-3\">";
-                echo "<a href=\"#fakelink\" class=\"btn btn-block btn-lg btn-success\">Summary</a>";
+                echo "<button class=\"btn btn-block btn-lg btn-success\">Summary</button>";
                 echo "</div>";
                 echo "<div class=\"col-lg-3\">";
-                echo "<a href=\"#fakelink\" class=\"btn btn-block btn-lg btn-default disabled\">Disabled Button</a>";
+                echo "<button class=\"btn btn-block btn-lg btn-default disabled\">Disabled Button</button>";
                 echo "</div>";
                 echo "<div class=\"col-lg-3\">";
-                echo "<a href=\"#fakelink\" class=\"btn btn-block btn-lg btn-default disabled\">Disabled Button</a>";
+                echo "<button class=\"btn btn-block btn-lg btn-default disabled\">Disabled Button</button>";
                 echo "</div>";
+
+                echo "</form>";
                 echo "</div>";
 
                 echo "</div>";
@@ -238,6 +250,7 @@ if (isset($_POST['submit'])) {
           }
         }
         ?>
+        <!-- dummy contect for better scrolling -->
         <section id="dummy" class="group dummy">
           <h3>dummy</h3>
           <div id="dummy_1" class="subgroup panel panel-default">
@@ -308,3 +321,6 @@ if (isset($_POST['submit'])) {
     </script>
   </body>
 </html>
+<?php
+  mysqli_close($connection);
+?>
