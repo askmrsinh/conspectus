@@ -4,24 +4,23 @@ $db_host = "localhost";
 $db_user = "root";
 $db_pass = "root";
 $db_name = "project_se";
-$connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("database conncetion Failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
+$connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 ?>
 
-<!-- PHP Session -->
 <?php
+//php session
 session_start();
 
 //redirect user to login page if user isn't logged in
 if (!isset($_SESSION['username'])) {
-  header("Location: login.php");//use for the redirection to login page  
+  header("Location: login.php");
 }
 
 //retrive a list of avalable course details in "courses" TABLE
 $sql = "SELECT * FROM `courses` ORDER BY `course_id`";
-$courses_sqlresult = mysqli_query($connection, $sql) or die("database conncetion Failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
-
+$courses_sqlresult = mysqli_query($connection, $sql) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 if (!$courses_sqlresult) {
-  die("database conncetion failed: " . mysqli_error($connection));
+  die("SELECT * FROM `courses` . . . , failed: " . mysqli_error($connection));
 }
 
 //check if form is submitted
@@ -43,11 +42,10 @@ if (isset($_POST['submit'])) {
       $year = date("Y");
       $course_table_id = "00" . $_SESSION['username'] ."_". $year ."_". $courses_thought[$i];
 
-      $sql = "INSERT INTO dashboard VALUES ('{$year}','{$_SESSION['username']}','{$courses_thought[$i]}','{$course_table_id}');";
-      $dashboard_sqlresult = mysqli_query($connection, $sql) or die("database conncetion failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
-
+      $sql = "INSERT INTO `dashboard` VALUES ('{$year}','{$_SESSION['username']}','{$courses_thought[$i]}','{$course_table_id}');";
+      $dashboard_sqlresult = mysqli_query($connection, $sql) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
       if (!$dashboard_sqlresult) {
-        die("INSERT INTO dashboard . . ., failed: " . mysqli_error($connection));
+        die("INSERT INTO `dashboard` . . ., failed: " . mysqli_error($connection));
       }
 
       $sql = "CREATE TABLE IF NOT EXISTS `$course_table_id` (";
@@ -59,10 +57,16 @@ if (isset($_POST['submit'])) {
       $sql .= "`satrt_date` date DEFAULT NULL,";
       $sql .= "`end_date` date DEFAULT NULL";
       $sql .= ") ENGINE=InnoDB DEFAULT CHARSET=latin1;";
-      $create_course_tabel_idsqlresult = mysqli_query($connection, $sql) or die("CREATE database conncetion failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
+      $create_course_tabel_id_sqlresult = mysqli_query($connection, $sql) or die("CREATE Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
+      if (!$create_course_tabel_id_sqlresult) {
+        die("CREATE TABLE `$course_table_id` . . ., failed: " . mysqli_error($connection));
+      }
 
       $sql = "INSERT INTO `$course_table_id`(`m_id`, `sm_id`, `m_name`, `sm_name`, `hours`) SELECT `m_id`, `sm_id`, `m_name`, `sm_name`, `hours` FROM `$courses_thought[$i]`";
-      $insert_course_tabel_idsqlresult = mysqli_query($connection, $sql) or die("INSERT database conncetion failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
+      $insert_course_tabel_id_sqlresult = mysqli_query($connection, $sql) or die("INSERT Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
+      if (!$insert_course_tabel_id_sqlresult) {
+        die("INSERT INTO `$course_table_id` . . ., failed: " . mysqli_error($connection));
+      }
     }
   }
 } else {
@@ -132,13 +136,27 @@ if (isset($_POST['submit'])) {
         <?php
         //display a list of available courses in databse
         while ($temp = mysqli_fetch_assoc($courses_sqlresult)){
+
+
           echo "<label class=\"checkbox\" for=\"" .$temp['course_id']. "\">";
           echo "<input type=\"checkbox\" name=\"courses_checked[]\"value=\"" .$temp['course_id']. "\" id=\"" .$temp['course_id']. "\" data-toggle=\"checkbox\" class=\"custom-checkbox\"><span class=\"icons\"><span class=\"icon-unchecked\"></span><span class=\"icon-checked\"></span></span>";
           echo $temp['course_name'] ." - ". $temp['course_id'];
           echo "</label>";
+
+          $year = date("Y");
+          $check_course_table_id = "00" . $_SESSION['username'] ."_". $year ."_". $temp['course_id'];
+
+          $sql = "SELECT `course_table_id` FROM `dashboard` WHERE course_table_id=\"$check_course_table_id\";";
+          $result = mysqli_query($connection, $sql) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
+
+          if(mysqli_num_rows($result)!=0){
+            echo "<script>";
+            echo "document.getElementById(\"" . $temp['course_id'] . "\").disabled = true;";
+            echo "</script>";
+          }
         }
         ?>
-        <button class="btn btn-lg btn-primary btn-info btn-block" type="submit" name="submit">ADD</button>
+        <button id="add" class="btn btn-lg btn-primary btn-info btn-block" disabled="disabled" type="submit" name="submit">ADD</button>
       </form>
     </div>
     <!-- /.remodal -->
@@ -152,10 +170,10 @@ if (isset($_POST['submit'])) {
           <?php
           //show years thought in under side nav
           $sql = "SELECT DISTINCT  year FROM `dashboard` WHERE Username='{$_SESSION['username']}' ORDER BY year DESC;";
-          $navgroupa_sqlresult = mysqli_query($connection, $sql) or die("database conncetion Failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
+          $navgroupa_sqlresult = mysqli_query($connection, $sql) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 
           if (!$navgroupa_sqlresult) {
-            die("database conncetion failed: " . mysqli_error($connection));
+            die("Database Connection Error: " . mysqli_error($connection));
           }
           while ($year_row = mysqli_fetch_assoc($navgroupa_sqlresult)){
             foreach($year_row as $navyear_field) {
@@ -165,10 +183,10 @@ if (isset($_POST['submit'])) {
 
               //show course id(s) thought under each year
               $sql = "SELECT `course_thought` FROM `dashboard` WHERE `Username`='{$_SESSION['username']}' AND `year`=$navyear_field ORDER BY course_thought DESC;";
-              $navgroupb_sqlresult = mysqli_query($connection, $sql) or die("database conncetion Failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
+              $navgroupb_sqlresult = mysqli_query($connection, $sql) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 
               if (!$navgroupb_sqlresult) {
-                die("database conncetion failed: " . mysqli_error($connection));
+                die("Database Connection Error: " . mysqli_error($connection));
               }
               while ($course_thought_row = mysqli_fetch_assoc($navgroupb_sqlresult)){
                 foreach($course_thought_row as $navcourse_thought_field) {
@@ -197,10 +215,10 @@ if (isset($_POST['submit'])) {
       <div class="col-xs-9">
         <?php
         $sql = "SELECT DISTINCT  year FROM `dashboard` WHERE Username='{$_SESSION['username']}' ORDER BY year DESC;";
-        $sectiongroupa_sqlresult = mysqli_query($connection, $sql) or die("database conncetion Failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
+        $sectiongroupa_sqlresult = mysqli_query($connection, $sql) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 
         if (!$sectiongroupa_sqlresult) {
-          die("database conncetion failed: " . mysqli_error($connection));
+          die("Database Connection Error: " . mysqli_error($connection));
         }
         while ($year_row = mysqli_fetch_assoc($sectiongroupa_sqlresult)){
           foreach($year_row as $sectionyear_field) {
@@ -209,10 +227,10 @@ if (isset($_POST['submit'])) {
             echo "<h3><i class=\"glyphicon glyphicon-time\"></i>" .$sectionyear_field. "</h3>";
 
             $sql = "SELECT `course_thought` FROM `dashboard` WHERE `Username`='{$_SESSION['username']}' AND `year`=$sectionyear_field ORDER BY course_thought DESC;";
-            $sectiongroupb_sqlresult = mysqli_query($connection, $sql) or die("database conncetion Failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
+            $sectiongroupb_sqlresult = mysqli_query($connection, $sql) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 
             if (!$sectiongroupb_sqlresult) {
-              die("database conncetion failed: " . mysqli_error($connection));
+              die("Database Connection Error: " . mysqli_error($connection));
             }
             while ($course_thought_row = mysqli_fetch_assoc($sectiongroupb_sqlresult)){
               foreach($course_thought_row as $sectioncourse_thought_field) {
@@ -265,14 +283,12 @@ if (isset($_POST['submit'])) {
         </section>
       </div>
 
-
     <!-- jQuery -->
     <script src="js/jquery-1.11.2.min.js"></script>
     <!-- Twitter Bootstrap Core JS -->
     <script src="bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
     <!-- Flat-UI for Bootstrap -->
     <script src="Flat-UI-master/dist/js/flat-ui.min.js"></script>
-    <script src="http://cdn.jsdelivr.net/typeahead.js/0.9.3/typeahead.min.js"></script>
 
     <script>
       $('.collapse').collapse();
@@ -318,6 +334,11 @@ if (isset($_POST['submit'])) {
       var inst = $("[data-remodal-id=modal2]").remodal();
       //  inst.open();
       //]]>
+    </script>
+    <script>
+      $(':checkbox').click(function() {
+        $("#add").attr('disabled',! this.checked)
+      });
     </script>
   </body>
 </html>
