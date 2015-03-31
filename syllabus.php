@@ -4,7 +4,7 @@ $db_host = "localhost";
 $db_user = "root";
 $db_pass = "root";
 $db_name = "project_se";
-$connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("database conncetion Failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
+$connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 ?>
 
 <?php

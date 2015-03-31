@@ -4,7 +4,7 @@ $db_host = "localhost";
 $db_user = "root";
 $db_pass = "root";
 $db_name = "project_se";
-$connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("database conncetion Failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
+$connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 ?>
 
 <?php
@@ -16,11 +16,10 @@ if (isset($_POST['submit'])) {
   $full_name = trim(ucwords(mysqli_real_escape_string($connection,$_POST["full_name"])));
 
   //make a new entry in "accounts" TABLE
-  $sql = "INSERT INTO accounts VALUES ('{$username}','{$password}','{$full_name}');";
-  $result = mysqli_query($connection, $sql) or die("database conncetion failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
-
+  $sql = "INSERT INTO `accounts` VALUES ('{$username}','{$password}','{$full_name}');";
+  $result = mysqli_query($connection, $sql) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
   if (!$result) {
-    die("database conncetion Failed: " . mysqli_error($connection));
+    die("INSERT INTO `accounts` . . . , failed: " . mysqli_error($connection));
   } else {
     //display registration successful message and redirect to Login page
     $message = "Registered as: " . $full_name . ", redirecting . . .";

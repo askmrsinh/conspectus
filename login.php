@@ -4,12 +4,13 @@ $db_host = "localhost";
 $db_user = "root";
 $db_pass = "root";
 $db_name = "project_se";
-$connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("database conncetion Failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
+$connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 ?>
 
-<!-- PHP Session -->
 <?php
+//php session
 session_start();
+
 //check if Login form is submitted
 if (isset($_POST['submit'])) {
   //to prevent SQL INJECTION ATTACK
@@ -17,22 +18,21 @@ if (isset($_POST['submit'])) {
   $password = trim(mysqli_real_escape_string($connection,$_POST["password"]));
 
   //validate input login details from "accounts" TABLE
-  $sql = "SELECT * FROM accounts WHERE Username='$username' and Password='$password';";
-  $result = mysqli_query($connection, $sql) or die("database conncetion Failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");;
-
+  $sql = "SELECT * FROM `accounts` WHERE Username='$username' and Password='$password';";
+  $result = mysqli_query($connection, $sql) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
   if (!$result) {
-    die("SELECT * FROM accounts . . . , failed: " . mysqli_error($connection));
-  }
-
-  $row = mysqli_fetch_row($result);
-
-  // If result matched $username and $password
-  if($row){
-    $_SESSION['username'] = $row[0];
-    $_SESSION['full_name'] = $row[2];
-    header('Location:index.php');
+    die("SELECT * FROM `accounts` . . . , failed: " . mysqli_error($connection));
   } else {
-    $message = "Wrong Username or Password, try again . . .";
+    //fetches one row and return it as an array,
+    $row = mysqli_fetch_row($result); 
+    // If result matched $username and $password, redirect to Dashboard
+    if($row){
+      $_SESSION['username'] = $row[0];
+      $_SESSION['full_name'] = $row[2];
+      header('Location:index.php');
+    } else {
+      $message = "Wrong Username or Password, try again . . .";
+    }
   }
 } else {
   //default username
