@@ -11,27 +11,43 @@ $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Dat
 //php session
 session_start();
 
+//redirect to dashboard if user is logged in
+if (isset($_SESSION['username'])) {
+  header("Location: index.php");
+}
+
 //check if Login form is submitted
 if (isset($_POST['submit'])) {
   //to prevent SQL INJECTION ATTACK
   $username = trim(mysqli_real_escape_string($connection,$_POST["username"]));
   $password = trim(mysqli_real_escape_string($connection,$_POST["password"]));
+  
+  
 
   //validate input login details from "accounts" TABLE
-  $sql = "SELECT * FROM `accounts` WHERE Username='$username' and Password='$password';";
+  $sql = "SELECT * FROM `accounts` WHERE `Username`='$username';";
   $result = mysqli_query($connection, $sql) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
   if (!$result) {
     die("SELECT * FROM `accounts` . . . , failed: " . mysqli_error($connection));
   } else {
     //fetches one row and return it as an array,
-    $row = mysqli_fetch_row($result); 
-    // If result matched $username and $password, redirect to Dashboard
+    $row = mysqli_fetch_row($result);
+    
+    //user exists so compare supplied $password 
     if($row){
-      $_SESSION['username'] = $row[0];
-      $_SESSION['full_name'] = $row[2];
-      header('Location:index.php');
+      $existing_hash = "$row[1]";
+      echo $row[1];
+      echo "<br \>";
+      echo $existing_hash;
+      if (password_verify("$password", "$existing_hash")) {
+        $_SESSION['username'] = $row[0];
+        $_SESSION['full_name'] = $row[2];
+        header('Location:index.php');
+      } else {
+        $message = "Wrong Username/Password, try again . . .";
+      }
     } else {
-      $message = "Wrong Username or Password, try again . . .";
+      $message = "User does not exists.";
     }
   }
 } else {
@@ -60,7 +76,7 @@ if (isset($_POST['submit'])) {
     <link href="css/login-register.css" rel="stylesheet">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
   </head>
   <body>
     <!-- Login Form -->
@@ -71,16 +87,18 @@ if (isset($_POST['submit'])) {
       ?>
       <div class="input-group input-group-lg">
         <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user"></i></span>
-        <input type="text" name="username" autofocus="" class="form-control" required="" placeholder="Username" aria-describedby="sizing-addon1" />
+        <input type="text" name="username" value="" autofocus="" class="form-control" required="" placeholder="Username" aria-describedby="sizing-addon1" />
       </div>
       <div class="input-group input-group-lg">
         <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-lock"></i></span>
         <input type="password" name="password" value="" class="form-control" required="" placeholder="Password" aria-describedby="sizing-addon1" />
       </div>
+<!--
       <label class="input-group checkbox" for="checkbox1">
         <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox" class="custom-checkbox" />
         <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>Remember me
       </label>
+-->
       <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit">Login</button>
     </form>
     <div class="footer">

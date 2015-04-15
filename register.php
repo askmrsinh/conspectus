@@ -8,6 +8,14 @@ $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Dat
 ?>
 
 <?php
+//php session
+session_start();
+
+//redirect to dashboard if user is logged in
+if (isset($_SESSION['username'])) {
+  header("Location: index.php");
+}
+
 //check if Register form is submitted
 if (isset($_POST['submit'])) {
   //to prevent SQL INJECTION ATTACK
@@ -15,15 +23,28 @@ if (isset($_POST['submit'])) {
   $password = trim(mysqli_real_escape_string($connection,$_POST["password"]));
   $full_name = trim(ucwords(mysqli_real_escape_string($connection,$_POST["full_name"])));
 
-  //make a new entry in "accounts" TABLE
-  $sql = "INSERT INTO `accounts` VALUES ('{$username}','{$password}','{$full_name}');";
+  $options = [
+    'cost' => 12
+  ];
+  $hashed_password = password_hash($password, PASSWORD_BCRYPT, $options)."\n";
+  echo $hashed_password;
+  
+  //make sure that the username and fullname don't already exist
+  $sql = "SELECT * FROM `accounts` WHERE `Username`='$username' OR `Fullname`='$full_name';";
   $result = mysqli_query($connection, $sql) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
-  if (!$result) {
-    die("INSERT INTO `accounts` . . . , failed: " . mysqli_error($connection));
+  if(mysqli_num_rows($result)>=1){
+    $message = "User account already exists.";
   } else {
-    //display registration successful message and redirect to Login page
-    $message = "Registered as: " . $full_name . ", redirecting . . .";
-    header("refresh:3;url=login.php");
+    //make a new entry in "accounts" TABLE
+    $sql = "INSERT INTO `accounts` VALUES ('{$username}','{$hashed_password}','{$full_name}');";
+    $result = mysqli_query($connection, $sql) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
+    if (!$result) {
+      die("INSERT INTO `accounts` . . . , failed: " . mysqli_error($connection));
+    } else {
+      //display registration successful message and redirect to Login page
+      $message = "Registered as: " . $full_name . ", redirecting . . .";
+      header("refresh:3;url=login.php");
+    }
   }
 } else {
   //default username
@@ -51,7 +72,7 @@ if (isset($_POST['submit'])) {
     <link href="css/login-register.css" rel="stylesheet">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
   </head>
   <body>
     <!-- Registeration Form -->
