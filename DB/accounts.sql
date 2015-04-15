@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2015 at 11:31 PM
+-- Generation Time: Apr 15, 2015 at 08:48 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `accounts` (
   `Username` varchar(24) NOT NULL,
-  `Password` varchar(255) NOT NULL,
+  `Password` char(60) NOT NULL,
   `Fullname` varchar(36) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -37,12 +37,10 @@ CREATE TABLE IF NOT EXISTS `accounts` (
 --
 
 INSERT INTO `accounts` (`Username`, `Password`, `Fullname`) VALUES
-('ashesh', 'Password123', 'Ashesh Kumar Singh'),
-('kunal', 'Password123', 'Kunal Nigam'),
-('parag', 'Password123', 'Parag Watwe'),
-('pritesh', 'Password123', 'Pritesh Tupe'),
-('shubham', 'Password123', 'Shubham Thakur'),
-('yakimo', 'Password123', 'Yakimo Tashi');
+('ashesh', '$2y$12$hhh3A3w0WkVLdWMhpWLGLuSzevW8/Xp82.0yU8fHLfu89odV65NhS', 'Ashesh Kumar Singh'),
+('parag', '$2y$12$lAKm73PJI7wy6m4q.VCdh.YwNHc2lqI4aSTYIEmajiPcE7DtuPZmm', 'Parag Watwe'),
+('pritesh', '$2y$12$eaFalRNBatrnItx4EhFA5OGm1pNXPswBjt1KMiGZPqZ.px71FmpcS', 'Pritesh Tupe'),
+('shubham', '$2y$12$vGmjmmjJJx/00iQ4beM/PuUMOvS3aMcTsGXtHx8mapLNqayyrpCbq', 'Shubham Thakur');
 
 --
 -- Indexes for dumped tables
@@ -52,7 +50,7 @@ INSERT INTO `accounts` (`Username`, `Password`, `Fullname`) VALUES
 -- Indexes for table `accounts`
 --
 ALTER TABLE `accounts`
- ADD PRIMARY KEY (`Username`), ADD UNIQUE KEY `Fullname` (`Fullname`);
+ADD PRIMARY KEY (`Username`), ADD UNIQUE KEY `Fullname` (`Fullname`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
