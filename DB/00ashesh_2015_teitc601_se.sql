@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `00ashesh_2015_teitc601_se` (
   `m_name` varchar(255) DEFAULT NULL,
   `sm_name` varchar(255) DEFAULT NULL,
   `hours` int(11) DEFAULT NULL,
-  `satrt_date` date DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
