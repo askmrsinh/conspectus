@@ -82,15 +82,21 @@ if (isset($_POST['submit'])) {
         echo "<p id=\"messages\">".$message."</p>";
       ?>
       <div class="form-group input-group-lg">
-        <input type="text" name="full_name" required="" pattern="^[A-Za-z. ]{3,36}" placeholder="Your full name" class="form-control">
+        <input type="text" name="full_name" required="" pattern="^[A-Za-z. ]{3,36}" placeholder="Your full name" class="form-control" 
+               oninvalid="setCustomValidity('must be between 3 to 36 characters long; can have alphabets, dots and spaces.')"
+               onchange="try{setCustomValidity('')}catch(e){}">
       </div>
       <div class="input-group input-group-lg">
         <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user"></i></span>
-        <input type="text" name="username" class="form-control" autocomplete="off" required="" pattern="^[a-z0-9.]{3,24}$" placeholder="enter desired Username" aria-describedby="sizing-addon1">
+        <input type="text" name="username" class="form-control" autocomplete="off" required="" pattern="^[a-z0-9.]{3,24}$" placeholder="enter desired Username" aria-describedby="sizing-addon1" 
+               oninvalid="setCustomValidity('must be between 3 to 24 characters long; can have lowercase alphabets, numbers and dots.')"
+               onchange="try{setCustomValidity('')}catch(e){}">
       </div>
       <div class="input-group input-group-lg">
         <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-lock"></i></span>
-        <input type="text" name="password" class="form-control" autocomplete="off" required="" pattern="^(?=^.{4,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" placeholder="enter some Password" aria-describedby="sizing-addon1">
+        <input type="text" name="password" class="form-control" autocomplete="off" required="" pattern="^(?=^.{4,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" placeholder="enter some Password" aria-describedby="sizing-addon1" 
+               oninvalid="setCustomValidity('must be atleast 4 characters long; must be a combination of upercase & lowercase alphabets and digit(s); other characters are optional.')"
+               onchange="try{setCustomValidity('')}catch(e){}">
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit">Make account</button>
     </form>
