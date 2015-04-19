@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
       $sql .= "`m_name` varchar(255) DEFAULT NULL,";
       $sql .= "`sm_name` varchar(255) DEFAULT NULL,";
       $sql .= "`hours` int(11) DEFAULT NULL,";
-      $sql .= "`satrt_date` date DEFAULT NULL,";
+      $sql .= "`start_date` date DEFAULT NULL,";
       $sql .= "`end_date` date DEFAULT NULL";
       $sql .= ") ENGINE=InnoDB DEFAULT CHARSET=latin1;";
       $create_course_tabel_id_sqlresult = mysqli_query($connection, $sql) or die("CREATE Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
@@ -94,9 +94,10 @@ if (isset($_POST['submit'])) {
     <!-- Custom CSS-->
     <link href="css/main.css" rel="stylesheet">
     <link href="css/dashboard.css" rel="stylesheet">
+    <link href="Trip.js-3.0.0/dist/trip.css" rel="stylesheet" type="image/x-icon"/>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
   </head>
   <body>
     <nav class="navbar navbar-default navbar-static-top">
@@ -109,17 +110,17 @@ if (isset($_POST['submit'])) {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand brand" href="#">Conspectus</a>
+          <a class="navbar-brand brand" href="index.php">Conspectus</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
+            <li id="tour1" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-user"></i><?php echo $_SESSION['full_name'] ?><span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#1">New Syllabus</a></li>
+                <li><a href="#1">New Course</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Edit Profile</a></li>
+                <li><a href="backup.php">Backup</a></li>
                 <li><a href="logout.php">Logout</a></li>
               </ul>
             </li>
@@ -240,20 +241,14 @@ if (isset($_POST['submit'])) {
                 echo "<h4><i class=\"glyphicon glyphicon-book\"></i>" .$sectioncourse_thought_field. "</h4>";
 
                 echo "<div class=\"row demo-row\">";
-                echo "<form action=\"syllabus.php\" method=\"POST\" target=\"_blank\">";
+                echo "<form action=\"syllabus.php\" method=\"POST\">";
 
-                echo "<div class=\"col-lg-3\">";
+                echo "<div class=\"col-lg-6\">";
+                echo "<button id=\"tour2\" type=\"submit\" name=\"plancourse\" value=\"" .$buttoncourse_table_id. "\" class=\"btn btn-block btn-lg btn-info\">Set Plan</button>";
+                echo "</div>";
 
-                echo "<button target=_blank type=\"submit\" name=\"plan\" value=\"" .$buttoncourse_table_id. "\" class=\"btn btn-block btn-lg btn-info\">Set Plan</button>";
-                echo "</div>";
-                echo "<div class=\"col-lg-3\">";
-                echo "<button class=\"btn btn-block btn-lg btn-success\">Summary</button>";
-                echo "</div>";
-                echo "<div class=\"col-lg-3\">";
-                echo "<button class=\"btn btn-block btn-lg btn-default disabled\">Disabled Button</button>";
-                echo "</div>";
-                echo "<div class=\"col-lg-3\">";
-                echo "<button class=\"btn btn-block btn-lg btn-default disabled\">Disabled Button</button>";
+                echo "<div class=\"col-lg-6\">";
+                echo "<button id=\"tour3\" type=\"submit\" name=\"delcourse\" value=\"" .$buttoncourse_table_id. "\" class=\"btn btn-block btn-lg btn-danger\">Delete</button>";
                 echo "</div>";
 
                 echo "</form>";
@@ -282,6 +277,8 @@ if (isset($_POST['submit'])) {
           </div>
         </section>
       </div>
+      </div>
+    </div>
 
     <!-- jQuery -->
     <script src="js/jquery-1.11.2.min.js"></script>
@@ -338,6 +335,35 @@ if (isset($_POST['submit'])) {
     <script>
       $(':checkbox').click(function() {
         $("#add").attr('disabled',! this.checked)
+      });
+    </script>
+    <script src="Trip.js-3.0.0/dist/trip.min.js" type="text/javascript"></script>
+    <script>
+      var trip = new Trip([
+        {
+          sel : $('#tour1'),
+          content : 'Click for Options',
+          position : "w",
+          animation: 'fadeInLeft'
+        },
+        {
+          sel : $('#tour2'),
+          content : 'Click for Scheduling',
+          position : "s",
+          animation: 'fadeInUp'
+        },
+        {
+          sel : $('#tour3'),
+          content : 'Click to </span>Remove</span>',
+          position : "s",
+          animation: 'fadeInUp'
+        }
+      ],{
+        delay : 3000
+      }); // details about options are listed below
+
+      $(document).ready(function(){
+        trip.start();
       });
     </script>
   </body>
