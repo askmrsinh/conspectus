@@ -1,6 +1,8 @@
 form {
   width: 400px;
-  height: 422px;/*367px;*/
+  height: 422px;
+  /*367px;*/
+
   margin: 50px auto;
 }
 
@@ -14,7 +16,6 @@ img {
 #messages {
   margin: 30px 10px 20px 10px;
   text-align: center;
-
 }
 
 .input-group,

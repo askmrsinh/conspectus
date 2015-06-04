@@ -21,18 +21,18 @@ table {
   color: #000000;
 }
 
-.done{
+.done {
   float: right;
   padding: 20px 20px 20px 20px;
 }
 
-.trip-block{
-  font-size: 16px; 
+.trip-block {
+  font-size: 16px;
   padding: 2px 4px 2px 4px !important;
 }
 
-@media print{
-  button{
+@media print {
+  button {
     display: none !important;
   }
 }

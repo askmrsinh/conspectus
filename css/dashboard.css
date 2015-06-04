@@ -1,10 +1,10 @@
-body{
+body {
   background-color: #ffffff;
   min-width: 767px;
   overflow-x: hidden;
 }
 
-.glyphicon{
+.glyphicon {
   padding-right: 10px;
 }
 
@@ -25,53 +25,59 @@ body{
   margin: 0 auto;
 }
 
-label, input {
+label,
+input {
   /* in order to define widths */
+
   display: inline-block;
 }
 
 label {
   /* positions the label text beside the input */
+
   text-align: left;
 }
 
 label + input {
   /* large margin-right to force the next element to the new-line
   and margin-left to create a gutter between the label and input */
+
   margin: 0 30% 0 4%;
 }
-
 /* only the submit button is matched by this selector,
 but to be sure you could use an id or class for that button */
+
 input + input {
   float: left;
 }
 
-
 @media(max-width:767px) {
-  .col-xs-9{
+  .col-xs-9 {
     width: 100%;
   }
 }
 
 .group {
-/*  background-color:darkorange;*/
+  /*  background-color:darkorange;*/
+
   height: 90%;
   margin-bottom: 10%;
   padding: 4% 2% 2% 2%;
 }
+
 .subgroup {
-/*  background-color: yellowgreen;*/
+  /*  background-color: yellowgreen;*/
+
   width: 95%;
   margin-left: 5%;
   padding: 2% 1% 1% 1%;
 }
 
-.btn{
+.btn {
   margin-top: 20px;
 }
 
-.panel-body>h3{
+.panel-body>h3 {
   margin-bottom: 20px;
 }
 
@@ -79,13 +85,14 @@ input + input {
   top: 20px;
 }
 /* sidebar */
+
 .bs-docs-sidebar {
   padding-left: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
 /* all links */
+
 .bs-docs-sidebar .nav>li>a {
   color: #999;
   border-left: 4px solid transparent;
@@ -93,16 +100,16 @@ input + input {
   font-size: 18px !important;
   font-weight: 400;
 }
-
 /* nested links */
+
 .bs-docs-sidebar .nav .nav>li>a {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 30px;
   font-size: 14px !important;
 }
-
 /* active & hover links */
+
 .bs-docs-sidebar .nav>.active>a,
 .bs-docs-sidebar .nav>li>a:hover,
 .bs-docs-sidebar .nav>li>a:focus {
@@ -112,6 +119,7 @@ input + input {
   border-left-color: #EE6A56;
 }
 /* all active links */
+
 .bs-docs-sidebar .nav>.active>a,
 .bs-docs-sidebar .nav>.active:hover>a,
 .bs-docs-sidebar .nav>.active:focus>a {
@@ -119,6 +127,7 @@ input + input {
   padding-left: 10px;
 }
 /* nested active links */
+
 .bs-docs-sidebar .nav .nav>.active>a,
 .bs-docs-sidebar .nav .nav>.active:hover>a,
 .bs-docs-sidebar .nav .nav>.active:focus>a {
@@ -126,24 +135,26 @@ input + input {
   margin-left: 20px;
   padding-left: 10px;
 }
-
 /* hide inactive nested list */
+
 .bs-docs-sidebar .nav ul.nav {
   display: none;
 }
 /* show active nested list */
+
 .bs-docs-sidebar .nav>.active>ul.nav {
   display: block;
 }
 
-.dummy{
+.dummy {
   visibility: hidden;
 }
 
-.trip-block{
-  font-size: 16px; 
+.trip-block {
+  font-size: 16px;
   padding: 2px 4px 2px 4px !important;
 }
-.war{
+
+.war {
   color: #E74C3C;
 }
