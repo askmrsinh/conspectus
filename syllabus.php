@@ -101,7 +101,7 @@ if (isset($_POST['plancourse'])) {
     <link href="bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Lato:300|Grand+Hotel" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300|Grand+Hotel" rel="stylesheet" type="text/css" />
     <!-- Flat-UI for Bootstrap -->
     <link href="Flat-UI-master/dist/css/flat-ui.min.css" rel="stylesheet">
     <!-- Datepicker -->

@@ -16,7 +16,7 @@ if (!isset($_SESSION['username'])) {
   header("Location: login.php");
 }
 
-//retrive a list of avalable course details in "courses" TABLE
+//retrive a list of available course details in "courses" TABLE
 $sql = "SELECT * FROM `courses` ORDER BY `course_id`";
 $courses_sqlresult = mysqli_query($connection, $sql) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 if (!$courses_sqlresult) {
@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
   }
   else
   {
-    //check total number of couses thought by the user
+    //check total number of couses selected by the user
     $N = count($courses_thought);
 
     $message = "You selected $N course(s): ";
@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
     <!-- Twitter Bootstrap Core CSS -->
     <link href="bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Fonts -->
-    <link href="http://fonts.googleapis.com/css?family=Lato:300|Grand+Hotel" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300|Grand+Hotel" rel="stylesheet" type="text/css" />
     <!-- Flat-UI for Bootstrap -->
     <link href="Flat-UI-master/dist/css/flat-ui.min.css" rel="stylesheet">
     <!-- Remodal -->

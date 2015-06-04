@@ -21,8 +21,8 @@ if (isset($_POST['submit'])) {
   //to prevent SQL INJECTION ATTACK
   $username = trim(mysqli_real_escape_string($connection,$_POST["username"]));
   $password = trim(mysqli_real_escape_string($connection,$_POST["password"]));
-  
-  
+
+
 
   //validate input login details from "accounts" TABLE
   $sql = "SELECT * FROM `accounts` WHERE `Username`='$username';";
@@ -32,8 +32,8 @@ if (isset($_POST['submit'])) {
   } else {
     //fetches one row and return it as an array,
     $row = mysqli_fetch_row($result);
-    
-    //user exists so compare supplied $password 
+
+    //user exists so compare supplied $password
     if($row){
       $existing_hash = "$row[1]";
       echo $row[1];
@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
     <!-- Twitter Bootstrap Core CSS -->
     <link href="bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Fonts -->
-    <link href="http://fonts.googleapis.com/css?family=Lato:300|Grand+Hotel" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300|Grand+Hotel" rel="stylesheet" type="text/css" />
     <!-- Flat-UI for Bootstrap -->
     <link href="Flat-UI-master/dist/css/flat-ui.min.css" rel="stylesheet">
     <!-- Custom CSS-->
