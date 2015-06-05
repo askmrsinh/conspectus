@@ -1,9 +1,17 @@
+<!-- THIS FILE CREATES THE MINIMAL DATABASE REQUIRED FOR CONSPECTUS TO WORK -->
+
+<!-- Make sure a username "root" with password "root" already exists -->
+<!-- Alternatively you may change the username and password in each of the PHP files -->
+
+
+<!-- connect to MySQL -->
 <?php
 $db_host = "localhost";
 $db_user = "root";
 $db_pass = "root";
 $connection = mysqli_connect($db_host, $db_user, $db_pass) or die("database conncetion Failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 
+//create and select the "project_se" database
 $sql = "CREATE DATABASE IF NOT EXISTS `project_se`";
 $result = mysqli_query($connection, $sql) or die("database creation Failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");;
 
@@ -233,4 +241,7 @@ $sql .= "(NULL, 3, NULL, 'SCM Process', NULL),";
 $sql .= "(NULL, 4, NULL, 'Change Control', NULL);";
 $insert_teitc601_se_tabel_result = mysqli_query($connection, $sql) or die("CREATE database conncetion failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 //-- --------------------------------------------------------
+
+
+header("Location: ../login.php");//redirect to login page
 ?>
