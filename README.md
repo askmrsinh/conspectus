@@ -1,6 +1,8 @@
 # Conspectus - Syllabus Management
 
-##Setup
+
+**Setup**
+
 1. Start
   * Apache HTTP server
   * MySQL Database server
@@ -8,5 +10,7 @@
   * make sure username "root" has password "root"
   * alternatively, you may change the username and/or password in each of the PHP files
 3. navigate to [`http://localhost/project_SE/DB/setup.php`](http://localhost/project_SE/DB/setup.php)<br>(assuming that the project folder exits directly inside the 'htdocs' folder)
+
+___
 
 ![Conspectus screenshots](https://raw.githubusercontent.com/user501254/project_SE/master/doc/output_Gbjb76.gif)
