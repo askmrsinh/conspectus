@@ -60,8 +60,8 @@ if (!isset($_SESSION['username'])) {
       if (isset($_POST['report'])) {
         $user_course_table = $_POST['report'];
 
-        //count the number of feilds (empty and nonempty)
-        for ($i=0; $i<(count($_POST['start'])-1) || $i<(count($_POST['end'])-1) ; $i++){
+        //count the number of fields (empty and nonempty)
+        for ($i=0; $i<=(count($_POST['start'])-1) || $i<=(count($_POST['end'])-1) ; $i++){
           //if any start is not empty put in databse
           if(!empty($_POST['start'][$i])){
 
