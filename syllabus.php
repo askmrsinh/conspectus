@@ -43,6 +43,7 @@ if (isset($_POST['plancourse'])) {
   echo "<table class=\"table table-hover table-responsive table-bordered table-condenced\">";
   while($row = mysqli_fetch_row($result))
   {
+    //show row if it is a module
     if(!empty($row[0])){
       $module_no = $row[0];
       echo "<tr>";
@@ -55,6 +56,7 @@ if (isset($_POST['plancourse'])) {
 
       echo "</tr>";
     }
+    //show row if it is a submodule
     if(!empty($row[1])){
       echo "<tr>";
       echo "<td></td>";
@@ -65,6 +67,7 @@ if (isset($_POST['plancourse'])) {
       echo "<input type=\"hidden\" name=\"submoduleno[]\" value=\"". $submodule_no ."\">";
       echo "<input type=\"hidden\" name=\"submodulename[]\" value=\"". $row[3] ."\">";
 
+      //show date range input feilds for all submodules
       echo "
     <td id=\"sandbox-container\">
     <div class=\"input-daterange input-group\" id=\"datepicker\">
@@ -77,6 +80,8 @@ if (isset($_POST['plancourse'])) {
     }
   }
   echo "</table>";
+
+  //print table or proceed to gantt chart view ie. "summary.php"
   echo "<div class=\"done col-lg-3\">
           <button id=\"tour8\" class=\"btn btn-lg btn-primary btn-block btn-success\" onclick=\"printFunction()\">Print</button>
         </div>";
