@@ -60,7 +60,7 @@ if (!isset($_SESSION['username'])) {
       if (isset($_POST['report'])) {
         $user_course_table = $_POST['report'];
 
-        //count the number of feilds (empty and non nonempty)
+        //count the number of feilds (empty and nonempty)
         for ($i=0; $i<(count($_POST['start'])-1) || $i<(count($_POST['end'])-1) ; $i++){
           //if any start is not empty put in databse
           if(!empty($_POST['start'][$i])){
@@ -92,9 +92,11 @@ if (!isset($_SESSION['username'])) {
             }
           }
 
+          //set "ganttData" variable directly using data posted in "syllabus.php" page,
+          //database is not queried to save time
           echo "{
           id: 1, name: \"$submodule_no\", series: [
-            { name: \"$submodule\", start: new Date(".str_replace("-",",",$start)."), end: new Date(".str_replace("-",",",$end).") },
+            { name: \"$submodule\", start: new Date(\"$start\"), end: new Date(\"$end\") },
     ]
     },";
 
