@@ -1,0 +1,36 @@
+{
+  "name": "Conspectus",
+  "version": "develop",
+  "homepage": "https://github.com/user501254/project_SE",
+  "authors": [
+    "Ashesh Kumar <user501254@gmail.com>"
+  ],
+  "description": "syllabus tracking web application",
+  "keywords": [
+    "syllabus",
+    "tracking",
+    "syllabus",
+    "tracking",
+    "college",
+    "course"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-datepicker": "~1.4.0",
+    "bootstrap": "~3.x.x",
+    "Datejs": "https://github.com/datejs/Datejs.git",
+    "flat-ui": "~2.2.2",
+    "jquery-ui": "~1.11.4",
+    "jquery.ganttView": "https://github.com/thegrubbsian/jquery.ganttView.git#~0.8.8",
+    "remodal": "~1.0.2",
+    "jquery": "~2.1.4",
+    "trip.js": "~3.1.0"
+  }
+}
