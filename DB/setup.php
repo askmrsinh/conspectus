@@ -49,7 +49,7 @@ $create_courses_tabel_result = mysqli_query($connection, $sql) or die("CREATE da
 //  -- Dumping data for table `courses`
 //  --
 $sql = "INSERT INTO `courses` (`course_id`, `course_name`, `engineering_year`, `discipline`, `semester`) VALUES";
-$sql .= "('teitc502_os', 'Operating System', 'T.E.', 'Information Technology', 5)";
+$sql .= "('teitc502_os', 'Operating System', 'T.E.', 'Information Technology', 5),";
 $sql .= "('teitc601_se', 'Software Engineering', 'T.E.', 'Information Technology', 6);";
 $insert_course_tabel_result = mysqli_query($connection, $sql) or die("INSERT database conncetion failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 //-- --------------------------------------------------------
