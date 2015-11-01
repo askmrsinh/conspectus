@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
       die("INSERT INTO `accounts` . . . , failed: " . mysqli_error($connection));
     } else {
       //display registration successful message and redirect to Login page
-      $message = "Registered as: " . $full_name . ", redirecting . . .";
+      $message = "Registered as \"" . $username . "\", redirecting . . .";
       header("refresh:3;url=login.php");
     }
   }
@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
   //default username
   $username = "";
   //default message
-  $message = "Make a <span class=\"brand\">Conspectus </span>Account.";
+  $message = "<span class=\"brand\">Conspectus </span>";
 }
 ?>
 <!DOCTYPE html>

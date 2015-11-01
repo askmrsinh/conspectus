@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
   //default username
   $username = "";
   //default message
-  $message = "Login to <span class=\"brand\">Conspectus.</span>";
+  $message = "<span class=\"brand\">Conspectus</span>";
 }
 ?>
 <!DOCTYPE html>
