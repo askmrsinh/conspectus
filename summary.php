@@ -27,6 +27,23 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" type="text/css" href="jquery.ganttView-master/lib/jquery-ui-1.8.4.css" />
     <link rel="stylesheet" type="text/css" href="jquery.ganttView-master/example/reset.css" />
     <link rel="stylesheet" type="text/css" href="jquery.ganttView-master/jquery.ganttView.css" />
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png?v=bOOKmG78np">
+	<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png?v=bOOKmG78np">
+	<link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png?v=bOOKmG78np">
+	<link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png?v=bOOKmG78np">
+	<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png?v=bOOKmG78np" sizes="32x32">
+	<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png?v=bOOKmG78np" sizes="96x96">
+	<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png?v=bOOKmG78np" sizes="16x16">
+	<link rel="manifest" href="/favicons/manifest.json?v=bOOKmG78np">
+	<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg?v=bOOKmG78np" color="#5bbad5">
+	<link rel="shortcut icon" href="/favicons/favicon.ico?v=bOOKmG78np">
+	<meta name="msapplication-TileColor" content="#00aba9">
+	<meta name="msapplication-config" content="/favicons/browserconfig.xml?v=bOOKmG78np">
+	<meta name="theme-color" content="#ffffff">
+    <link rel="shortcut icon" href="favicon.ico">
+    
     <style type="text/css">
       body {
         font-family: tahoma, verdana, helvetica;
