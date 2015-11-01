@@ -27,7 +27,6 @@ if (isset($_POST['submit'])) {
     'cost' => 12
   ];
   $hashed_password = password_hash($password, PASSWORD_BCRYPT, $options)."\n";
-  echo $hashed_password;
 
   //make sure that the username and fullname don't already exist
   $sql = "SELECT * FROM `accounts` WHERE `Username`='$username' OR `Fullname`='$full_name';";
