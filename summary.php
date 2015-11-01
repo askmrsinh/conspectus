@@ -62,8 +62,6 @@ if (!isset($_SESSION['username'])) {
       }
     </style>
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
   </head>
   <body>
     <div id="ganttChart"></div>
