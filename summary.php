@@ -109,17 +109,22 @@ if (!isset($_SESSION['username'])) {
               }
             }
 
-          //set "ganttData" variable directly using data posted in "syllabus.php" page,
-          //database is not queried to save time
-          echo "{
+            //show gantt bar only if both start and end dates exist
+            if(!empty($_POST['start'][$i]) && !empty($_POST['end'][$i])){
+              //set "ganttData" variable directly using data posted in "syllabus.php" page,
+              //database is not queried to save time
+              echo "{
+                      id: 1,
                       name: \"$submodule_no\",
                       series: [
                         { 
-            { name: \"$submodule\", start: new Date(\"$start\"), end: new Date(\"$end\") },
-    ]
-    },";
+                          name: \"$submodule\", start: new Date(\"$start\"), end: new Date(\"$end\") 
+                        },
+                      ]
+                    },";
+            }
 
-        }
+          }
 
         } else {
           echo "no submit";
