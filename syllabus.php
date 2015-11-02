@@ -87,7 +87,8 @@ $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Dat
       if (!$result) {
         die("Query to show fields from table failed");
       }
-
+      
+      echo "<div id=\"printableArea\">";
       echo "<h1 class=\"course_table\">" . $usercoursetable . "</h1>";
       $fields_num = mysqli_num_fields($result);
       echo "<form id=\"schedule-form\" action=\"summary.php\" method=\"POST\" traget=\"_blank\">";
@@ -100,7 +101,7 @@ $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Dat
           echo "<tr>";
           echo "<th id=\"tour1\"> $module_no </td>";
           echo "<th id=\"tour2\" colspan=\"2\"> $row[2] </td>";
-          echo "<th id=\"tour3\" colspan=\"2\"> $row[4] </td>";
+          echo "<th id=\"tour3\" colspan=\"2\"> $row[4] hrs</td>";
 
           echo "<input type=\"hidden\" name=\"moduleno[]\" value=\"". $module_no ."\">";
           echo "<input type=\"hidden\" name=\"modulename[]\" value=\"". $row[2] ."\">";
@@ -131,14 +132,12 @@ $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Dat
         }
       }
       echo "</table>";
+      echo "</div>";
 
-      //print table or proceed to gantt chart view ie. "summary.php"
+      //proceed to gantt chart view ie. "summary.php"
       echo "<div class=\"done col-lg-3\">
-          <button id=\"tour8\" class=\"btn btn-lg btn-primary btn-block btn-success\" onclick=\"printFunction()\">Print</button>
-        </div>";
-      echo "<div class=\"done col-lg-3\">
-          <button type=\"submit\" name=\"report\" value=\"". $usercoursetable ."\" class=\"btn btn-lg btn-primary btn-block btn-success\">Done</button>
-        </div>";
+              <button id=\"tour8\" type=\"submit\" name=\"report\" value=\"". $usercoursetable ."\" class=\"btn btn-lg btn-primary btn-block btn-success\">Done</button>
+            </div>";
       echo "</form>";
     } else {
       echo "unable to select user course table";
@@ -164,11 +163,20 @@ $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Dat
       });
     </script>
     <script>
-      function printFunction() {
+      function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
         window.print();
+
+        document.body.innerHTML = originalContents;
       }
     </script>
-    <script src="Trip.js-3.0.0/dist/trip.min.js" type="text/javascript"></script>
+    
+    <!-- Trip.js -->
+    <script src="bower_components/Trip.js/dist/trip.min.js" type="text/javascript"></script>
     <script>
       var trip = new Trip([
         {
@@ -215,26 +223,19 @@ $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Dat
         },
         {
           sel : $('#tour8'),
-          content : 'Click to print Schedule',
-          position : "s",
-          animation: 'fadeInUp'
-        },
-        {
-          sel : $('#tour9'),
           content : 'See Report',
           position : "s",
-          animation: 'fadeInUp'
+          animation: 'fadeInLeft'
         }
       ],{
         backToTopWhenEnded : true,
-        delay : 3000
+        showNavigation : true,
+        showCloseBox : true,
         delay : 2000
       });
 
       $(document).ready(function(){
         trip.start();
-      },{
-        showCloseBox : true,
       });
     </script>
   </body>
