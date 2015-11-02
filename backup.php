@@ -39,4 +39,8 @@ fwrite($fp, json_encode($arr, JSON_PRETTY_PRINT));
 fclose($fp);
 unset($arr);
 
+echo "Check \"DB/backup/\" folder";
+
+header("refresh:2;url=login.php");
+
 ?>
