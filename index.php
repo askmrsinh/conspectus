@@ -97,7 +97,6 @@ if (isset($_POST['submit'])) {
     <!-- Custom CSS -->
     <link href="css/main.css" rel="stylesheet">
     <link href="css/dashboard.css" rel="stylesheet">    
-    <link href="Trip.js-3.0.0/dist/trip.css" rel="stylesheet" type="image/x-icon"/>
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png?v=bOOKmG78np">
