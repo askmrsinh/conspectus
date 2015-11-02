@@ -122,8 +122,6 @@ if (isset($_POST['submit'])) {
     <!-- jQuery -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Twitter Bootstrap Core JS -->
-    <script src="bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
-    <!-- Flat-UI for Bootstrap -->
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   </body>
 </html>
