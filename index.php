@@ -148,6 +148,7 @@ if (isset($_POST['submit'])) {
 
     <!-- Modal -->
     <div class="remodal" data-remodal-id="1">
+      <button data-remodal-action="close" class="remodal-close"></button>
       <form action="index.php" method="POST" class="selectcourses">
         <?php
         //display a list of available courses in databse
