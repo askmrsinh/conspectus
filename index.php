@@ -377,8 +377,8 @@ if (isset($_POST['submit'])) {
           animation: 'fadeInUp'
         }
       ],{
-        delay : 3000
-      }); // details about options are listed below
+        delay : 2000
+      });
 
       $(document).ready(function(){
         trip.start();
