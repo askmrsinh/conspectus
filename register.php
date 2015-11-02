@@ -61,11 +61,11 @@ if (isset($_POST['submit'])) {
     <meta name="author" content="">
     <title>Conspectus</title>
     <!-- Twitter Bootstrap Core CSS -->
-    <link href="bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300|Grand+Hotel" rel="stylesheet" type="text/css" />
     <!-- Flat-UI for Bootstrap -->
-    <link href="Flat-UI-master/dist/css/flat-ui.min.css" rel="stylesheet">
+    <link href="bower_components/flat-ui/dist/css/flat-ui.min.css" rel="stylesheet">
     <!-- Custom CSS-->
     <link href="css/main.css" rel="stylesheet">
     <link href="css/login-register.css" rel="stylesheet">
@@ -118,11 +118,11 @@ if (isset($_POST['submit'])) {
     </div>
 
     <!-- jQuery -->
-    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Twitter Bootstrap Core JS -->
     <script src="bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
     <!-- Flat-UI for Bootstrap -->
-    <script src="Flat-UI-master/dist/js/flat-ui.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   </body>
 </html>
 <!-- close database connection -->

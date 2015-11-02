@@ -24,10 +24,12 @@ if (!isset($_SESSION['username'])) {
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Conspectus</title>
-    <link rel="stylesheet" type="text/css" href="jquery.ganttView-master/lib/jquery-ui-1.8.4.css" />
-    <link rel="stylesheet" type="text/css" href="jquery.ganttView-master/example/reset.css" />
-    <link rel="stylesheet" type="text/css" href="jquery.ganttView-master/jquery.ganttView.css" />
     
+    <!-- jQuery.ganttView -->
+    <link rel="stylesheet" type="text/css" href="bower_components/jquery.ganttView/lib/jquery-ui-1.8.4.css" />
+    <link rel="stylesheet" type="text/css" href="bower_components/jquery.ganttView/example/reset.css" />
+    <link rel="stylesheet" type="text/css" href="bower_components/jquery.ganttView/jquery.ganttView.css" />
+
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png?v=bOOKmG78np">
 	<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png?v=bOOKmG78np">
@@ -137,11 +139,12 @@ if (!isset($_SESSION['username'])) {
         }]
     </script>
 -->
-
-    <script type="text/javascript" src="jquery.ganttView-master/lib/jquery-1.4.2.js"></script>
-    <script type="text/javascript" src="jquery.ganttView-master/lib/date.js"></script>
-    <script type="text/javascript" src="jquery.ganttView-master/lib/jquery-ui-1.8.4.js"></script>
-    <script type="text/javascript" src="jquery.ganttView-master/jquery.ganttView.js"></script>
+    
+    <!-- jQuery.ganttView -->
+    <script type="text/javascript" src="bower_components/jquery.ganttView/lib/jquery-1.4.2.js"></script>
+    <script type="text/javascript" src="bower_components/jquery.ganttView/lib/date.js"></script>
+    <script type="text/javascript" src="bower_components/jquery.ganttView/lib/jquery-ui-1.8.4.js"></script>
+    <script type="text/javascript" src="bower_components/jquery.ganttView/jquery.ganttView.js"></script>
 
     <script type="text/javascript">
       $(function () {

@@ -16,15 +16,15 @@ $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Dat
     <meta name="author" content="">
     <title>Conspectus</title>
     <!-- Twitter Bootstrap Core CSS -->
-    <link href="bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300|Grand+Hotel" rel="stylesheet" type="text/css" />
     <!-- Flat-UI for Bootstrap -->
-    <link href="Flat-UI-master/dist/css/flat-ui.min.css" rel="stylesheet">
-    <!-- Datepicker -->
-    <link href="bootstrap-datepicker-1.4.0-dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
-    <!-- Remodal -->
-    <link rel="stylesheet" href="Remodal-0.6.3/dist/jquery.remodal.css">
+    <link href="bower_components/flat-ui/dist/css/flat-ui.min.css" rel="stylesheet">
+    <!-- Bootstrap Datepicker -->
+    <link href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+    <!-- Trip.js -->
+    <link href="bower_components/Trip.js/dist/trip.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/main.css" rel="stylesheet">
     <link href="css/syllabus.css" rel="stylesheet">
@@ -150,12 +150,12 @@ $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Dat
     
     <div></div>
     <!-- jQuery -->
-    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Twitter Bootstrap Core JS -->
-    <script src="bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
-    <!-- Flat-UI for Bootstrap -->
-    <script src="Flat-UI-master/dist/js/flat-ui.min.js"></script>
-    <script src="bootstrap-datepicker-1.4.0-dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Datepicker -->
+    <script src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    
     <script>
       $('#sandbox-container .input-daterange').datepicker({
         format: "yyyy-mm-dd",
