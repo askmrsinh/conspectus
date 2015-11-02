@@ -32,20 +32,20 @@ if (!isset($_SESSION['username'])) {
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png?v=bOOKmG78np">
-	<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png?v=bOOKmG78np">
-	<link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png?v=bOOKmG78np">
-	<link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png?v=bOOKmG78np">
-	<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png?v=bOOKmG78np" sizes="32x32">
-	<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png?v=bOOKmG78np" sizes="96x96">
-	<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png?v=bOOKmG78np" sizes="16x16">
-	<link rel="manifest" href="/favicons/manifest.json?v=bOOKmG78np">
-	<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg?v=bOOKmG78np" color="#5bbad5">
-	<link rel="shortcut icon" href="/favicons/favicon.ico?v=bOOKmG78np">
-	<meta name="msapplication-TileColor" content="#00aba9">
-	<meta name="msapplication-config" content="/favicons/browserconfig.xml?v=bOOKmG78np">
-	<meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png?v=bOOKmG78np">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png?v=bOOKmG78np">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png?v=bOOKmG78np">
+    <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png?v=bOOKmG78np" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicons/favicon-96x96.png?v=bOOKmG78np" sizes="96x96">
+    <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png?v=bOOKmG78np" sizes="16x16">
+    <link rel="manifest" href="/favicons/manifest.json?v=bOOKmG78np">
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg?v=bOOKmG78np" color="#5bbad5">
+    <link rel="shortcut icon" href="/favicons/favicon.ico?v=bOOKmG78np">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml?v=bOOKmG78np">
+    <meta name="theme-color" content="#ffffff">
     <link rel="shortcut icon" href="favicon.ico">
-    
+
     <style type="text/css">
       body {
         font-family: tahoma, verdana, helvetica;
@@ -73,71 +73,73 @@ if (!isset($_SESSION['username'])) {
 
     <script>
       var ganttData = [
-    <?php
-      if (isset($_POST['report'])) {
-        $user_course_table = $_POST['report'];
+        <?php
+        if (isset($_POST['report'])) {
+          $user_course_table = $_POST['report'];
 
-        //count the number of fields (empty and nonempty)
-        for ($i=0; $i<=(count($_POST['start'])-1) || $i<=(count($_POST['end'])-1) ; $i++){
-          //if any start is not empty put in databse
-          if(!empty($_POST['start'][$i])){
+          //count the number of fields (empty and nonempty)
+          for ($i=0; $i<=(count($_POST['start'])-1) || $i<=(count($_POST['end'])-1) ; $i++){
+            //if any start is not empty put in databse
+            if(!empty($_POST['start'][$i])){
 
-            $submodule = $_POST['submodulename'][$i];
-            $submodule_no =$_POST['submoduleno'][$i];
+              $submodule = $_POST['submodulename'][$i];
+              $submodule_no =$_POST['submoduleno'][$i];
 
-            $start = $_POST['start'][$i];
+              $start = $_POST['start'][$i];
 
-            $sql = "UPDATE `$user_course_table` SET `start_date`=\"$start\" WHERE sm_name=\"$submodule\";";
-            $sql_result = mysqli_query($connection, $sql) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
+              $sql = "UPDATE `$user_course_table` SET `start_date`=\"$start\" WHERE sm_name=\"$submodule\";";
+              $sql_result = mysqli_query($connection, $sql) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 
-            if (!$sql_result) {
-              die("Database Connection Error: " . mysqli_error($connection));
+              if (!$sql_result) {
+                die("Database Connection Error: " . mysqli_error($connection));
+              }
+
             }
+            if(!empty($_POST['end'][$i])){
 
-          }
-          if(!empty($_POST['end'][$i])){
+              $submodule = $_POST['submodulename'][$i];
 
-            $submodule = $_POST['submodulename'][$i];
+              $end = $_POST['end'][$i];
 
-            $end = $_POST['end'][$i];
+              $sql = "UPDATE `$user_course_table` SET `end_date`=\"$end\" WHERE sm_name=\"$submodule\";";
+              $sql_result = mysqli_query($connection, $sql) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
 
-            $sql = "UPDATE `$user_course_table` SET `end_date`=\"$end\" WHERE sm_name=\"$submodule\";";
-            $sql_result = mysqli_query($connection, $sql) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
-
-            if (!$sql_result) {
-              die("Database Connection Error: " . mysqli_error($connection));
+              if (!$sql_result) {
+                die("Database Connection Error: " . mysqli_error($connection));
+              }
             }
-          }
 
           //set "ganttData" variable directly using data posted in "syllabus.php" page,
           //database is not queried to save time
           echo "{
-          id: 1, name: \"$submodule_no\", series: [
+                      name: \"$submodule_no\",
+                      series: [
+                        { 
             { name: \"$submodule\", start: new Date(\"$start\"), end: new Date(\"$end\") },
     ]
     },";
 
         }
 
-      } else {
-        echo "no submit";
-      }
-    ?>
+        } else {
+          echo "no submit";
+        }
+        ?>
       ]
     </script>
     <h1 class="course_table_gantt"> <?php echo $user_course_table ?> </h1>
 
     <!--  -->
-<!--
-    <script>
-      var ganttData = [
-        {
-          id: 1, name: "Feature 1", series: [
-            { name: "<?php echo $submodule ?>", start: new Date(<?php echo str_replace("-",",",$start)?>), end: new Date(<?php echo str_replace("-",",",$end)?>) },
+    <!--
+<script>
+var ganttData = [
+{
+id: 1, name: "Feature 1", series: [
+{ name: "<?php echo $submodule ?>", start: new Date(<?php echo str_replace("-",",",$start)?>), end: new Date(<?php echo str_replace("-",",",$end)?>) },
 //          { name: "Actual", start: new Date(2010,00,02), end: new Date(2010,00,05), color: "#f0f0f0" }
-          ]
-        }]
-    </script>
+]
+}]
+</script>
 -->
     
     <!-- jQuery.ganttView -->
