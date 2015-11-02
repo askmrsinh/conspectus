@@ -28,9 +28,6 @@ $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Dat
     <!-- Custom CSS -->
     <link href="css/main.css" rel="stylesheet">
     <link href="css/syllabus.css" rel="stylesheet">
-    <link href="Trip.js-3.0.0/dist/trip.css" rel="stylesheet">
-
-    <link href="bootstrap-datepicker-1.4.0-dist/css/bootstrap-datepicker3.standalone.min.css" rel="stylesheet">
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png?v=bOOKmG78np">
