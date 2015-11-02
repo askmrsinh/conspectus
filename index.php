@@ -84,16 +84,19 @@ if (isset($_POST['submit'])) {
     <meta name="author" content="">
     <title>Conspectus</title>
     <!-- Twitter Bootstrap Core CSS -->
-    <link href="bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300|Grand+Hotel" rel="stylesheet" type="text/css" />
     <!-- Flat-UI for Bootstrap -->
-    <link href="Flat-UI-master/dist/css/flat-ui.min.css" rel="stylesheet">
+    <link href="bower_components/flat-ui/dist/css/flat-ui.min.css" rel="stylesheet">
     <!-- Remodal -->
-    <link rel="stylesheet" href="Remodal-0.6.3/dist/jquery.remodal.css">
-    <!-- Custom CSS-->
+    <link href="bower_components/remodal/dist/remodal.css" rel="stylesheet">
+    <link href="bower_components/remodal/dist/remodal-default-theme.css"  rel="stylesheet">
+    <!-- Trip.js -->
+    <link href="bower_components/Trip.js/dist/trip.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <link href="css/main.css" rel="stylesheet">
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">    
     <link href="Trip.js-3.0.0/dist/trip.css" rel="stylesheet" type="image/x-icon"/>
 
     <!-- Favicon -->
@@ -294,12 +297,12 @@ if (isset($_POST['submit'])) {
     </div>
 
     <!-- jQuery -->
-    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Twitter Bootstrap Core JS -->
-    <script src="bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
-    <!-- Flat-UI for Bootstrap -->
-    <script src="Flat-UI-master/dist/js/flat-ui.min.js"></script>
-
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Remodal -->
+    <script src="bower_components/remodal/dist/remodal.min.js" type="text/javascript"></script>
+    
     <script>
       $('.collapse').collapse();
       $('.dropdown-toggle').dropdown();
@@ -313,7 +316,7 @@ if (isset($_POST['submit'])) {
         }
       });
     </script>
-    <script src="Remodal-0.6.3/dist/jquery.remodal.min.js" type="text/javascript"></script>
+
     <script type="text/javascript">
       //<![CDATA[
       $(document).on("open", ".remodal", function() {
@@ -350,7 +353,9 @@ if (isset($_POST['submit'])) {
         $("#add").attr('disabled',! this.checked)
       });
     </script>
-    <script src="Trip.js-3.0.0/dist/trip.min.js" type="text/javascript"></script>
+    
+    <!-- Trip.js -->
+    <script src="bower_components/Trip.js/dist/trip.min.js" type="text/javascript"></script>
     <script>
       var trip = new Trip([
         {
