@@ -87,8 +87,7 @@ $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Dat
       if (!$result) {
         die("Query to show fields from table failed");
       }
-      
-      echo "<div id=\"printableArea\">";
+
       echo "<h1 class=\"course_table\">" . $usercoursetable . "</h1>";
       $fields_num = mysqli_num_fields($result);
       echo "<form id=\"schedule-form\" action=\"summary.php\" method=\"POST\" traget=\"_blank\">";
@@ -121,18 +120,17 @@ $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Dat
 
           //show date range input feilds for all submodules
           echo "
-    <td id=\"sandbox-container\">
-    <div class=\"input-daterange input-group\" id=\"datepicker\">
-      <input id=\"tour6\" type=\"text\" class=\"input-sm form-control\" autocomplete=\"off\" name=\"start[]\" value=\"". $row[5] ."\" placeholder=\"\"/>
-      <span class=\"input-group-addon\">to</span>
-      <input id=\"tour7\" type=\"text\" class=\"input-sm form-control\" autocomplete=\"off\" name=\"end[]\" value=\"". $row[6] ."\" placeholder=\"\"/>
-    </div>
-    </td>";
+                <td id=\"sandbox-container\">
+                <div class=\"input-daterange input-group\" id=\"datepicker\">
+                  <input id=\"tour6\" type=\"text\" class=\"input-sm form-control\" autocomplete=\"off\" name=\"start[]\" value=\"". $row[5] ."\" placeholder=\"\"/>
+                  <span class=\"input-group-addon\">to</span>
+                  <input id=\"tour7\" type=\"text\" class=\"input-sm form-control\" autocomplete=\"off\" name=\"end[]\" value=\"". $row[6] ."\" placeholder=\"\"/>
+                </div>
+                </td>";
           echo "</tr>";
         }
       }
       echo "</table>";
-      echo "</div>";
 
       //proceed to gantt chart view ie. "summary.php"
       echo "<div class=\"done col-lg-3\">
@@ -161,18 +159,6 @@ $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Dat
         autoclose: true,
         todayHighlight: true
       });
-    </script>
-    <script>
-      function printDiv(divName) {
-        var printContents = document.getElementById(divName).innerHTML;
-        var originalContents = document.body.innerHTML;
-
-        document.body.innerHTML = printContents;
-
-        window.print();
-
-        document.body.innerHTML = originalContents;
-      }
     </script>
     
     <!-- Trip.js -->
