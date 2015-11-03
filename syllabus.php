@@ -53,6 +53,14 @@ $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Dat
         margin-bottom:0px;
         padding-top:20px;
         padding-bottom:20px;
+    }
+
+    i.glyphicon {
+      color: #ddd;
+    }
+
+    i.glyphicon:hover {
+      color: #fff;
       }
     </style>
   </head>
@@ -88,7 +96,7 @@ $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Dat
         die("Query to show fields from table failed");
       }
 
-      echo "<h1 class=\"course_table\">" . $usercoursetable . "</h1>";
+      echo "<h1 class=\"course_table\"><a href=\"index.php\"><i id=\"tour9\" class=\"glyphicon glyphicon-menu-left\"></i></a>" . $usercoursetable . "</h1>";
       $fields_num = mysqli_num_fields($result);
       echo "<form target=\"_blank\" id=\"schedule-form\" action=\"summary.php\" method=\"POST\" traget=\"_blank\">";
       echo "<table class=\"table table-hover table-responsive table-bordered table-condenced\">";
@@ -212,8 +220,14 @@ $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Dat
           content : 'See Report',
           position : "s",
           animation: 'fadeInLeft'
-        }
+        },
       ],{
+      sel: $('#tour9'),
+      content: 'Back to Dashboard',
+      position: "s",
+      animation: 'fadeInRight'
+    }
+  ], {
         backToTopWhenEnded : true,
         showNavigation : true,
         showCloseBox : true,
