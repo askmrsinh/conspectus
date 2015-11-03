@@ -90,7 +90,7 @@ $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Dat
 
       echo "<h1 class=\"course_table\">" . $usercoursetable . "</h1>";
       $fields_num = mysqli_num_fields($result);
-      echo "<form id=\"schedule-form\" action=\"summary.php\" method=\"POST\" traget=\"_blank\">";
+      echo "<form target=\"_blank\" id=\"schedule-form\" action=\"summary.php\" method=\"POST\" traget=\"_blank\">";
       echo "<table class=\"table table-hover table-responsive table-bordered table-condenced\">";
       while($row = mysqli_fetch_row($result))
       {
