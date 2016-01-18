@@ -35,9 +35,6 @@ if (isset($_POST['submit'])) {
     //user exists so compare supplied $password
     if ($row) {
       $existing_hash = "$row[1]";
-      echo $row[1];
-      echo "<br \>";
-      echo $existing_hash;
       if (password_verify("$password", "$existing_hash")) {
         $_SESSION['username'] = $row[0];
         $_SESSION['full_name'] = $row[2];
