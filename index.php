@@ -352,8 +352,12 @@ if (isset($_POST['submit'])) {
   //]]>
 </script>
 <script>
-  $(':checkbox').click(function () {
-    $("#add").attr('disabled', !this.checked)
+  $('.selectcourses :checkbox').click(function () {
+    if ($(".selectcourses input:checkbox:checked").length > 0) {
+      $("#add").removeAttr("disabled");
+    } else {
+      $("#add").attr("disabled","disabled");
+    }
   });
 </script>
 
