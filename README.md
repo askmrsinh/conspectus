@@ -9,7 +9,7 @@
 2. Use correct MySQL user account
   * make sure username "root" has password "root"
   * alternatively, you may change the username and/or password in each of the PHP files
-3. navigate to [`http://localhost/project_SE/DB/setup.php`](http://localhost/project_SE/DB/setup.php)<br>(assuming that the project folder exits directly inside the 'htdocs' folder)
+3. navigate to [`http://localhost/project_SE/DB/setup.php`](http://localhost/project_SE/DB/setup.php)<br>(assuming that the project folder exits directly inside the 'htdocs' or 'html' folder)
 
 ___
 
