@@ -89,10 +89,12 @@ if (isset($_POST['submit'])) {
 <body>
 <!-- Registeration Form -->
 <form id="register-form" action="register.php" method="POST">
-  <img src="PNGs/Notebook.png" alt=""/>
-  <?php
-  echo "<p id=\"messages\">" . $message . "</p>";
-  ?>
+  <a href="index.php">
+    <img src="PNGs/Notebook.png" alt=""/>
+    <?php
+    echo "<p id=\"messages\">" . $message . "</p>";
+    ?>
+  </a>
   <div class="form-group input-group-lg">
     <input type="text" name="full_name" required="" pattern="^[A-Za-z. ]{3,36}" placeholder="Your full name"
            class="form-control"

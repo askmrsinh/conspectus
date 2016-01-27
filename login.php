@@ -90,10 +90,12 @@ if (isset($_POST['submit'])) {
 <body>
 <!-- Login Form -->
 <form action="login.php" method="POST">
-  <img src="PNGs/Notebook.png" alt=""/>
-  <?php
-  echo "<p id=\"messages\">" . $message . "</p>";
-  ?>
+  <a href="index.php">
+    <img src="PNGs/Notebook.png" alt=""/>
+    <?php
+    echo "<p id=\"messages\">" . $message . "</p>";
+    ?>
+  </a>
   <div class="input-group input-group-lg">
     <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user"></i></span>
     <input type="text" name="username" value="" autofocus="" class="form-control" required="" placeholder="Username"
