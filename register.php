@@ -5,10 +5,16 @@ $db_user = "root";
 $db_pass = "root";
 $db_name = "project_se";
 $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
+
+
 ?>
+
+
 
 <?php
 //php session
+
+
 session_start();
 
 //redirect to dashboard if user is logged in
@@ -32,7 +38,7 @@ if (isset($_POST['submit'])) {
   $sql = "SELECT * FROM `accounts` WHERE `Username`='$username' OR `Fullname`='$full_name';";
   $result = mysqli_query($connection, $sql) or die("Database Connection Error: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
   if (mysqli_num_rows($result) >= 1) {
-    $message = "User account already exists.";
+    $message = "<p class=\"textback\" align=\"centre\">User account already exists.</p>";
   } else {
     //make a new entry in "accounts" TABLE
     $sql = "INSERT INTO `accounts` VALUES ('{$username}','{$hashed_password}','{$full_name}');";
@@ -41,7 +47,7 @@ if (isset($_POST['submit'])) {
       die("INSERT INTO `accounts` . . . , failed: " . mysqli_error($connection));
     } else {
       //display registration successful message and redirect to Login page
-      $message = "Registered as \"" . $username . "\", redirecting . . .";
+      $message = "<p class=\"textback2 \">Registered as \"" . $username . "\", redirecting . . .</p>";
       header("refresh:3;url=login.php");
     }
   }
@@ -120,7 +126,7 @@ if (isset($_POST['submit'])) {
 </form>
 <div class="footer">
   <hr/>
-  <a class="input-group" href="login.php">Already have an account?</a>
+  <a class="input-group textback" href="login.php">Already have an account?</a>
 </div>
 
 <!-- jQuery -->

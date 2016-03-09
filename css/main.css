@@ -24,3 +24,18 @@ p {
   text-shadow: 1px 3px #8d8d8d;
   color: black;
 }
+
+.textback {
+  width: 350px;
+   height: 40px;
+   padding: 10px;
+   background-color: #2A2A2A;
+   box-shadow: 4px 4px;
+}
+.textback2 {
+  width: 450px;
+   height: 40px;
+   padding: 10px;
+   background-color: #2A2A2A;
+   box-shadow: 4px 4px;
+}

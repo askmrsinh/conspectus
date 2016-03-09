@@ -40,10 +40,10 @@ if (isset($_POST['submit'])) {
         $_SESSION['full_name'] = $row[2];
         header('Location:index.php');
       } else {
-        $message = "Wrong Username/Password, try again . . .";
+        $message = "<p class=\"textback\">Wrong Username/Password, try again . . .</p>";
       }
     } else {
-      $message = "User does not exists.";
+      $message = "<p class=\"textback\">User does not exists.</p>";
     }
   }
 } else {
@@ -116,7 +116,7 @@ if (isset($_POST['submit'])) {
 </form>
 <div class="footer">
   <hr/>
-  <a class="input-group" href="register.php">Make an account</a>
+  <a class="input-group textback " href="register.php">Make an account</a>
 </div>
 
 <!-- jQuery -->
