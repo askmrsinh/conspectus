@@ -10,6 +10,8 @@ $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Dat
 <?php
 $arr = array();
 
+mkdir('DB/backup', 0755, true);
+
 $rs = mysqli_query($connection,"SELECT * FROM accounts");
 $fp = fopen('DB/backup/accounts.json', 'w');
 while($obj = mysqli_fetch_object($rs)) {
