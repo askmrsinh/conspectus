@@ -21,8 +21,9 @@ if (!isset($_SESSION['username'])) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description"
+	content="Conspectus - Syllabus Management web application.">
+  <meta name="author" content="Ashesh Kumar Singh (ashesh.app@outlook.com)">
   <title>Conspectus</title>
 
   <!-- jQuery.ganttView -->

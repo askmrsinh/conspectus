@@ -12,8 +12,9 @@ $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die("Dat
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description"
+	content="Conspectus - Syllabus Planning web application.">
+  <meta name="author" content="Ashesh Kumar Singh (ashesh.app@outlook.com)">
   <title>Conspectus</title>
   <!-- Twitter Bootstrap Core CSS -->
   <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">

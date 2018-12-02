@@ -57,8 +57,9 @@ if (isset($_POST['submit'])) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description"
+	content="Conspectus - Syllabus Planning web application.">
+  <meta name="author" content="Ashesh Kumar Singh (ashesh.app@outlook.com)">
   <title>Conspectus</title>
   <!-- Twitter Bootstrap Core CSS -->
   <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -87,6 +88,8 @@ if (isset($_POST['submit'])) {
   <link rel="shortcut icon" href="favicon.ico">
 </head>
 <body>
+<iframe src="https://ghbtns.com/github-btn.html?user=user501254&repo=Conspectus&type=star&count=true&size=large" frameborder="0" scrolling="0" width="150px" height="30px" style="margin-top: 15px;padding-left: 21px;"></iframe>
+<iframe src="https://ghbtns.com/github-btn.html?user=user501254&repo=Conspectus&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="150px" height="30px" style="margin-top: 15px;"></iframe>
 <!-- Registeration Form -->
 <form id="register-form" action="register.php" method="POST">
   <a href="index.php">
