@@ -1,7 +1,7 @@
 # Conspectus - Syllabus Planning
 
 
-**Setup**
+## Setup
 
 1. Start
    - Apache HTTP server
@@ -17,6 +17,6 @@
 - [ ] Get rid of stupid looking HTML echos throughout
 - [ ] Improve code reuse
 - [ ] Migrate away from Cloud9 to always-on platforms
-___
 
+___
 ![Conspectus screenshots](https://raw.githubusercontent.com/user501254/project_SE/master/doc/output_Gbjb76.gif)
